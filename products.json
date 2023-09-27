@@ -1,828 +1,697 @@
 [
     {
         "id": 1,
-        "name": "Onion pizza ",
-        "price": {
-            "Small": 70,
-            "Regular": 130
-        },
-        "mrp":100,
-        "image": "images/onion.jpg"
-    },
-    {
-        "id": 2,
-        "name": "Capsicum Pizza ",
-        "price": {
-            "Small": 70,
-            "Regular": 130
-        },
-        "mrp":100,
-        "image": "images/onion.jpg"
-    },
-    {
-        "id": 3,
-        "name": "Tomato Pizza ",
-        "price": {
-            "Small": 70,
-            "Regular": 130
-        },
-        "mrp":100,
-        "image": "images/onion.jpg"
-    },
-    {
-        "id": 4,
-        "name": "Sweetcorn Pizza ",
-        "price": {
-            "Small": 80,
-            "Regular": 130
-        },
-        "mrp":100,
-        "image": "images/onion.jpg"
-    },
-    {
-        "id": 5,
-        "name": "Mushroom Pizza ",
-        "price": {
-            "Small": 80,
-            "Regular": 130
-        },
-        "mrp":100,
-        "image": "images/onion.jpg"
-    },
-    {
-        "id": 6,
-        "name": "Margharita Pizza",
-        "price": {
-            "Small": 80,
-            "Regular": 130
-        },
-        "mrp":100,
-        "image": "images/onion.jpg"
-    },
-    {
-        "id": 7,
-        "name": "Onion Capsicum Pizza ",
-        "price": {
-            "Small": 90,
-            "Regular": 130,
-            "Medium": 210
-        },
-        "mrp":130,
-        "image": "images/onioncapsicum.jpg"
-    },
-    {
-        "id": 8,
-        "name": "Onion Tomato Pizza ",
-        "price": {
-            "Small": 90,
-            "Regular": 130,
-            "Medium": 210
-        },
-        "mrp":130,
-        "image": "images/onioncapsicum.jpg"
-    },
-{
-        "id": 9,
-        "name": "Capsicum Tomato Pizza ",
-        "price": {
-            "Small": 90,
-            "Regular": 130,
-            "Medium": 210
-        },
-        "mrp":130,
-        "image": "images/onioncapsicum.jpg"
-},
-    {
-        "id": 10,
-        "name": "Paneer Onion Pizza ",
-        "price": {
-            "Small": 100,
-            "Regular": 130,
-            "Medium": 210
-        },
-        "mrp":130,
-        "image": "images/onioncapsicum.jpg"
-},
-    {
-        "id": 11,
-        "name": "Sweetcorn Tomato Pizza ",
-        "price": {
-            "Small": 100,
-            "Regular": 130,
-            "Medium": 210
-        },
-        "mrp":130,
-        "image": "images/onioncapsicum.jpg"
-    },
-    {
-        "id": 12,
-        "name": "Onion Sweetcorn Pizza ",
-        "price": {
-            "Small": 100,
-            "Regular": 130,
-            "Medium": 210
-        },
-        "mrp":130,
-        "image": "images/onioncapsicum.jpg"
-    },
-    {
-        "id": 13,
-        "name": "Farm fresh Pizza",
-        "p": "Topping:- Mushroom + Capsicum + Tomato + Onion",
-        "price": {
-            "Regular": 160,
-            "Medium": 310,
-            "Large": 420
-        },
-        "mrp":200,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 14,
-        "name": "Country Special Pizza",
-        "p": "Topping:- Onion + capsicum + Tomato + black olives",
-        "price": {
-            "Regular": 160,
-            "Medium": 310,
-            "Large": 420
-        },
-        "mrp":200,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 15,
-        "name": "Veggie spl. pizza",
-        "p": "Topping:- Capsicum + onion + tomato + corn",
-        "price": {
-            "Regular": 160,
-            "Medium": 310,
-            "Large": 420
-        },
-        "mrp":200,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 16,
-        "name": "Mix veg. pizza",
-        "p": "Topping:- Tomato + Capsicum + mushroom + jalapenos",
-        "price": {
-            "Regular": 160,
-            "Medium": 310,
-            "Large": 420
-        },
-        "mrp":200,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 17,
-        "name": "MAKHNI PIZZA",
-        "p": "Topping:- Makhni Sauce + Capsicum + paneer+ onion",
-        "price": {
-            "Regular": 180,
-            "Medium": 370,
-            "Large": 500
-        },
-        "mrp":250,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 18,
-        "name": "TANDOORI PIZZA",
-        "p": "Topping:- Tandoori Sauce + red paprika +  paneer + onion",
-        "price": {
-            "Regular": 180,
-            "Medium": 370,
-            "Large": 500
-        },
-        "mrp":250,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 19,
-        "name": "PAPPY PANEER PIZZA",
-        "p": "Topping:- Capsicum + paneer + sweet corn + Red paprika",
-        "price": {
-            "Regular": 180,
-            "Medium": 370,
-            "Large": 500
-        },
-        "mrp":250,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 20,
-        "name": "ITALIAN PIZZA ",
-        "p": "Topping:- Jalapenos + Capsicum + Tomato + mushroom",
-        "price": {
-            "Regular": 180,
-            "Medium": 370,
-            "Large": 500
-        },
-        "mrp":250,
-        "image": "images/s-img-2.jpg"
-    },
-    {
-        "id": 21,
-        "name": "Aloo Tikki Burger",
-        "price": 45,
-        "mrp":60,
-        "image": "images/p-1.jpg"
-    },
-    {
-        "id": 22,
-        "name": "Veg Cheese Burger",
-        "price": 60,
-        "mrp":80,
-        "image": "images/p-1.jpg"
-    },
-    {
-        "id": 23,
-        "name": "Hangover Burger",
-        "price": 70,
-        "mrp":90,
-        "image": "images/p-1.jpg"
-    },
-    {
-        "id": 24,
-        "name": "Veg Sandwich",
-        "price": 70,
-        "mrp":90,
-        "image": "images/vegsand.jpg"
-    },
-    {
-        "id": 25,
-        "name": "Pasta Sandwich",
-        "price": 75,
-        "mrp":100,
-        "image": "images/pastasand.jpg"
-    },
-    {
-        "id": 26,
-        "name": "Sweet Corn Sandwich",
-        "price": 85,
-        "mrp":120,
-        "image": "images/cornsand.jpg"
-    },
-    {
-        "id": 27,
-        "name": "Paneer Sandwich",
-        "price": 90,
-        "mrp":140,
-        "image": "images/Sandwich.jpg"
-    },
-    {
-        "id": 28,
-        "name": "Aloo Tikki wrap",
-        "price": 90,
-        "mrp":140,
-        "image": "images/aloowrap.jpeg"
-    },
-    {
-        "id": 29,
-        "name": "Paneer Tikki wrap",
-        "price": 110,
-        "mrp":170,
-        "image": "images/paneerwrap.jpeg"
-    },
-    {
-        "id": 30,
-        "name": "Special wrap",
-        "price": 120,
-        "mrp":200,
-        "image": "images/splwrap.jpeg"
-    },
-    {
-        "id": 31,
-        "name": "Plain Garlic Bread",
-        "price": 80,
-        "mrp":100,
-        "image": "images/gb.jpg"
-    },
-    {
-        "id": 32,
-        "name": "Cheese Corn Garlic Bread",
-        "price": 110,
-        "mrp":160,
-        "image": "images/gb.jpg"
-    },
-    {
-        "id": 33,
-        "name": "Stuff Garlic Bread",
-        "price": 120,
-        "mrp":180,
-        "image": "images/gb.jpg"
-    },
-    {
-        "id": 34,
-        "name": "Red sauce Pasta",
-        "price": 110,
-        "mrp":150,
-        "image": "images/redpasta.jpg"
-    },
-    {
-        "id": 35,
-        "name": "White sauce Pasta",
-        "price": 120,
-        "mrp":160,
-        "image": "images/whitepasta.jpg"
-    },
-    {
-        "id": 36,
-        "name": "Tandoori Pasta",
-        "price": 130,
-        "mrp":180,
-        "image": "images/redpasta.jpg"
-    },
-    {
-        "id": 37,
-        "name": "Makhni Pasta",
-        "price": 130,
-        "mrp":180,
-        "image": "images/makhnipasta.jpg"
-    },
-    {
-        "id": 38,
-        "name": "Mix sauce Pasta",
-        "price": 140,
-        "mrp":200,
-        "image": "images/mixpasta.jpg"
-    },
-    {
-        "id": 39,
-        "name": "Cold Coffee",
-        "price": 80,
-        "mrp":100,
-        "image": "images/coffee.jpeg"
-    },
-    {
-        "id": 40,
-        "name": "Strawberry Shake",
-        "price": 90,
-        "mrp":120,
-        "image": "images/strawberry.jpg"
-    },
-    {
-        "id": 41,
-        "name": "Oreo Shake",
-        "price": 90,
-        "mrp":120,
-        "image": "images/oreo.jpg"
-    },
-    {
-        "id": 42,
-        "name": "Vanilla Shake",
-        "price": 90,
-        "mrp":130,
-        "image": "images/vanilla.jpeg"
-    },
-    {
-        "id": 43,
-        "name": "Chocolate Shake",
-        "price": 90,
-        "mrp":130,
-        "image": "images/choco.jpg"
-    },
-    {
-        "id": 44,
-        "name": "Butter Scotch Shake",
-        "price": 100,
-        "mrp":140,
-        "image": "images/butter.jpg"
-    },
-    {
-        "id": 45,
-        "name": "Malai Chaap",
-        "price": 130,
-        "mrp":170,
-        "image": "images/malaichap.jpg"
-    },
-    {
-        "id": 46,
-        "name": "Masala Chaap",
-        "price": 130,
-        "mrp":170,
-        "image": "images/masalachap.jpg"
-    },
-    {
-        "id": 47,
-        "name": "Afgani Chaap",
-        "price": 130,
-        "mrp":170,
-        "image": "images/chaap1.jpg"
-    },
-    {
-        "id": 48,
-        "name": "Lemon Chaap",
-        "price": 140,
-        "mrp":170,
-        "image": "images/chaap1.jpg"
-    },
-    {
-        "id": 49,
-        "name": "KFC Chaap",
-        "price": 100,
-        "mrp":130,
-        "image": "images/kfcchaap.jpeg"
-    },
-    {
-        "id": 50,
-        "name": "Paneer Tikka",
-        "price": 150,
-        "mrp":190,
-        "image": "images/paneertikka.jpg"
-    },
-    {
-        "id": 51,
-        "name": "Veg noodles",
-        "price": 80,
-        "mrp":100,
-        "image": "images/Veg-Noodles.jpg"
-    },
-    {
-        "id": 52,
-        "name": "White noodles",
-        "price": 90,
-        "mrp":110,
-        "image": "images/whitenoodle.jpg"
-    },
-    {
-        "id": 53,
-        "name": "Cheese noodles",
-        "price": 100,
-        "mrp":130,
-        "image": "images/whitenoodle.jpg"
-    },
-    {
-        "id": 54,
-        "name": "Hakka noodles",
-        "price": 120,
-        "mrp":150,
-        "image": "images/hakkanoodle.jpg"
-    },
-    {
-        "id": 55,
-        "name": "Singapori noodles",
-        "price": 120,
-        "mrp":150,
-        "image": "images/singanoodle.jpg"
-    },
-    {
-        "id": 56,
-        "name": "Spring Roll",
-        "price": 80,
-        "mrp":110,
-        "image": "images/spring.jpeg"
-    },
-    {
-        "id": 57,
-        "name": "Dry Manchurian",
-        "price": 90,
-        "mrp":120,
-        "image": "images/dryman.jpg"
-    },
-    {
-        "id": 58,
-        "name": "Gravy Manchurian",
-        "price": 100,
-        "mrp":140,
-        "image": "images/gravyman.jpg"
-    },
-    {
-        "id": 59,
-        "name": "Pav Bhaji",
-        "price": 90,
-        "mrp":140,
-        "image": "images/pavbhaji.jpg"
-    },
-    {
-        "id": 60,
-        "name": "Cheese Chilli",
-        "price": 140,
-        "mrp":200,
-        "image": "images/cheesepan.jpg"
-    },
-    {
-        "id": 61,
-        "name": "Honey Chilli Potato",
-        "price": 130,
-        "mrp":170,
-        "image": "images/honeychil.jpg"
-    },
-    {
-        "id": 62,
-        "name": "Veg Momos",
-        "price": 70,
-        "mrp":90,
-        "image": "images/momo.jpg"
-    },
-    {
-        "id": 63,
-        "name": "Fried Momos",
-        "price": 80,
-        "mrp":100,
-        "image": "images/friedmomo.jpg"
-    },
-    {
-        "id": 64,
-        "name": "Kfc Momos",
-        "price": 100,
-        "mrp":140,
-        "image": "images/kfcmomos.jpeg"
-    },
-    {
-        "id": 65,
-        "name": "Chole Kulche",
-        "price": 45,
-        "mrp":60,
-        "image": "images/kulche.jpeg"
-    },
-    {
-        "id": 66,
-        "name": "Mix Pakode [250gm]",
-        "price": 60,
-        "mrp":70,
-        "image": "images/pakore.jpeg"
-    },
-    {
-        "id": 67,
-        "name": "Tikki Bhalle[Half]",
-        "price": 50,
-        "mrp":60,
-        "image": "images/bhalle.jpeg"
-    },
-    {
-        "id": 68,
-        "name": "Tikki Bhalle [Full]",
-        "price": 70,
-        "mrp":90,
-        "image": "images/bhalle.jpeg"
-    },
-    {
-        "id": 69,
-        "name": "Paneer Parcel",
-        "price": 70,
-        "mrp":100,
-        "image": "images/paneerparcel.jpeg"
-    },
-    {
-        "id": 70,
-        "name": "Mix Veg Parcel",
-        "price": 70,
-        "mrp":100,
-        "image": "images/Mixparcel.jpeg"
-    },
-    {
-        "id": 71,
         "name": "Shahi Paneer ",
         "price": {
-            "Half": 90,
-            "Full": 150
+            "Half": 70,
+            "Full": 120
         },
-        "mrp":120,
+        "mrp":100,
         "image": "images/shahipaneer.jpeg"
     },
     {
-        "id": 72,
+        "id": 2,
         "name": "Kadai Paneer ",
         "price": {
-            "Half": 100,
-            "Full": 160
+            "Half": 80,
+            "Full": 130
         },
-        "mrp":130,
+        "mrp":100,
         "image": "images/kadaipaneer.jpeg"
     },
     {
-        "id": 73,
-        "name": "Matar Paneer ",
-        "price": {
-            "Half": 90,
-            "Full": 150
-        },
-        "mrp":120,
-        "image": "images/matarpaneer.jpeg"
-    },
-    {
-        "id": 74,
+        "id": 3,
         "name": "Palak Paneer ",
         "price": {
-            "Half": 90,
-            "Full": 150
+            "Half": 70,
+            "Full": 120
         },
-        "mrp":120,
+        "mrp":100,
         "image": "images/palakpaneer.jpeg"
     },
     {
-        "id": 75,
-        "name": "Paneer Do Pyaza",
+        "id": 4,
+        "name": "Matar Paneer ",
         "price": {
-            "Half": 110,
-            "Full": 160
+            "Half": 70,
+            "Full": 120
         },
-        "mrp":130,
-        "image": "images/pyaza.jpeg"
+        "mrp":100,
+        "image": "images/matarpaneer.jpeg"
     },
     {
-        "id": 76,
+        "id": 5,
         "name": "Cheese Tomato ",
         "price": {
-            "Half": 90,
-            "Full": 150
+            "Half": 70,
+            "Full": 120
         },
-        "mrp":120,
+        "mrp":100,
         "image": "images/cheesetomato.jpeg"
     },
     {
-        "id":77,
-        "name": "Gravy Chaap",
-        "price": {
-            "Half": 90,
-            "Full": 140
-        },
-        "mrp":120,
-        "image": "images/gravychaap.jpeg"
-    },
-    {
-        "id": 78,
-        "name": "Malai Kofta",
-        "price": {
-            "Half": 90,
-            "Full": 150
-        },
-        "mrp":120,
-        "image": "images/malaikofta.jpeg"
-    },
-    {
-        "id": 79,
-        "name": "Chana Masala",
-        "price": {
-            "Half": 90,
-            "Full": 130
-        },
-        "mrp":120,
-        "image": "images/chanamasala.jpeg"
-    },
-    {
-        "id": 80,
-        "name": "Mix Veg",
+        "id": 6,
+        "name": "Cheese Butter Masala ",
         "price": {
             "Half": 80,
-            "Full": 130
+            "Full": 120
         },
-        "mrp":110,
-        "image": "images/mixveg.jpeg"
+        "mrp":100,
+        "image": "images/cheesebuttermasala.jpeg"
     },
     {
-        "id": 81,
-        "name": "Mushroom Matar",
+        "id": 7,
+        "name": "Malai Paneer ",
+        "price": {
+            "Half": 80,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/malaipaneer.jpeg"
+    },
+    {
+        "id": 8,
+        "name": "Methi Malai Paneer",
+        "price": {
+            "Half": 80,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/methimalaipaneer.jpeg"
+    },
+    {
+        "id": 9,
+        "name": "Shahi Korma",
+        "price": {
+            "Half": 80,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/shahikorma.jpeg"
+    },
+    {
+        "id": 10,
+        "name": "Paneer Bhurji",
         "price": {
             "Half": 100,
             "Full": 150
         },
-        "mrp":120,
-        "image": "images/mushroom.jpeg"
+        "mrp":130,
+        "image": "images/paneerbhurji.jpeg"
     },
     {
-        "id": 82,
-        "name": "Dal Makhani",
+        "id": 11,
+        "name": "Paneer Do Pyaja",
+        "price": {
+            "Half": 90,
+            "Full": 130
+        },
+        "mrp":100,
+        "image": "images/paneerdopyaja.jpeg"
+    },
+    {
+        "id": 12,
+        "name": "Dry Paneer ",
+        "price": {
+            "Half": 100,
+            "Full": 150
+        },        "mrp":130,
+        "image": "images/drypaneer.jpeg"
+    },
+    {
+        "id": 13,
+        "name": "Mushroom Matar ",
+        "price": {
+            "Half": 80,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/Mushroommatar.jpeg"
+    },
+    {
+        "id": 14,
+        "name": "Mushroom Masala ",
         "price": {
             "Half": 80,
             "Full": 130
         },
-        "mrp":120,
+        "mrp":100,
+        "image": "images/Mushroommasala.jpeg"
+    },
+    {
+        "id": 15,
+        "name": "Mushroom Malai ",
+        "price": {
+            "Half": 80,
+            "Full": 130
+        },
+        "mrp":100,
+        "image": "images/Mushroommalai.jpeg"
+    },
+    {
+        "id": 16,
+        "name": "Mushroom kadai ",
+        "price": {
+            "Half": 80,
+            "Full": 130
+        },
+        "mrp":100,
+        "image": "images/Mushroomkadai.jpeg"
+    },
+    {
+        "id": 17,
+        "name": "Mushroom Pyaza ",
+        "price": {
+            "Half": 80,
+            "Full": 130
+        },
+        "mrp":100,
+        "image": "images/Mushroompyaza.jpeg"
+    },
+    {
+        "id": 18,
+        "name": "Dal Makhani ",
+        "price": {
+            "Half": 60,
+            "Full": 100
+        },
+        "mrp":100,
         "image": "images/dalmakhani.jpeg"
     },
     {
-        "id": 83,
+        "id": 19,
         "name": "Yellow Dal",
         "price": {
-            "Half": 50,
-            "Full": 80
+            "Half": 30,
+            "Full": 50
         },
-        "mrp":80,
+        "mrp":50,
         "image": "images/yellowdal.jpeg"
     },
     {
-        "id": 84,
-        "name": "Rajma",
-        "price": {
-            "Half": 50,
-            "Full": 80
-        },
-        "mrp":80,
-        "image": "images/rajma.jpeg"
-    },
-    {
-        "id": 85,
-        "name": "Kadhi",
-        "price": {
-            "Half": 50,
-            "Full": 80
-        },
-        "mrp":80,
-        "image": "images/kadhi.jpeg"
-    },
-    {
-        "id": 86,
-        "name": "Aloo Matar",
-        "price": {
-            "Half": 50,
-            "Full": 80
-        },
-        "mrp":80,
-        "image": "images/aloomatar.jpeg"
-    },
-    {
-        "id": 87,
-        "name": "Mix Rayta",
+        "id": 20,
+        "name": "Black Dal",
         "price": {
             "Half": 40,
             "Full": 60
         },
         "mrp":60,
-        "image": "images/mixrayta.jpeg"
+        "image": "images/blackdal.jpeg"
     },
     {
-        "id": 88,
-        "name": "Plain Naan",
-        "price": 25,
-        "mrp":35,
-        "image": "images/plainnaan.jpeg"
+        "id": 21,
+        "name": "Dal Butter Fry ",
+        "price": {
+            "Half": 50,
+            "Full": 80
+        },
+        "mrp":70,
+        "image": "images/dalbutterfry.jpeg"
     },
     {
-        "id": 89,
-        "name": "Butter Naan",
-        "price": 30,
-        "mrp":40,
-        "image": "images/butternaan.jpeg"
+        "id": 22,
+        "name": "Dal Punjabi Tadka ",
+        "price": {
+            "Half": 40,
+            "Full": 60
+        },
+        "mrp":60,
+        "image": "images/dalpunjabitadka.jpeg"
     },
     {
-        "id": 90,
-        "name": "Stuff Naan",
-        "price": 40,
+        "id": 23,
+        "name": "Jeera Dal",
+        "price": {
+            "Half": 40,
+            "Full": 60
+        },
+        "mrp":60,
+        "image": "images/jeeradal.jpeg"
+    },
+    {
+        "id": 24,
+        "name": "Cheese Butter Dal",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/cheesebutterdal.jpeg"
+    },
+    {
+        "id": 25,
+        "name": "Malai Kofta",
+        "price": {
+            "Half": 70,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/malaikofta.jpeg"
+    },
+    {
+        "id": 26,
+        "name": "Palak Kofta",
+        "price": {
+            "Half": 70,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/palakkofta.jpeg"
+    },
+    {
+        "id": 27,
+        "name": "Gravy Chaap",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/gravychaap.jpeg"
+    },
+    {
+        "id": 28,
+        "name": "Malai Chaap",
+        "price": {
+            "Half": 80,
+            "Full": 120
+        },
+        "mrp":100,
+        "image": "images/malaichaap.jpg"
+    },
+    {
+        "id": 29,
+        "name": "Chole ",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
         "mrp":50,
-        "image": "images/stuffnaan.jpeg"
+        "image": "images/chole.jpeg"
     },
     {
-        "id": 91,
-        "name": "Onion Naan",
-        "price": 45,
-        "mrp":55,
-        "image": "images/onionnaan.jpeg"
+        "id": 30,
+        "name": "Chana Masala ",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/chanamasala.jpeg"
     },
     {
-        "id": 92,
-        "name": "Paneer Naan",
-        "price": 55,
-        "mrp":65,
-        "image": "images/paneernaan.jpeg"
+        "id": 31,
+        "name": "Chana Paneer ",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/chanapaneer.jpeg"
     },
     {
-        "id": 93,
-        "name": "Garlic Naan",
-        "price": 55,
-        "mrp":65,
-        "image": "images/garlicnaan.jpeg"
+        "id": 32,
+        "name": "Chana Palak ",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/chanapalak.jpeg"
     },
     {
-        "id": 94,
-        "name": "Tandoori Roti",
-        "price": 12,
-        "mrp":15,
-        "image": "images/tandooriroti.jpeg"
+        "id": 33,
+        "name": "Mix Veg ",
+        "price": {
+            "Half": 60,
+            "Full": 100
+        },
+        "mrp":100,
+        "image": "images/mixveg.jpeg"
     },
     {
-        "id": 95,
-        "name": "Tawa Roti",
-        "price": 12,
-        "mrp":15,
-        "image": "images/tawaroti.jpeg"
+        "id": 34,
+        "name": "Rajma Fried",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/rajmafried.jpeg"
     },
     {
-        "id": 96,
-        "name": "Ajwain Roti",
-        "price": 15,
-        "mrp":18,
-        "image": "images/ajwainroti.jpeg"
+        "id": 35,
+        "name": "Butter Rajma",
+        "price": {
+            "Half": 70,
+            "Full": 90
+        },
+        "mrp":100,
+        "image": "images/butterrajma.jpeg"
     },
     {
-        "id": 97,
-        "name": "Missi Roti",
-        "price": 20,
-        "mrp":25,
-        "image": "images/misiroti.jpeg"
+        "id": 36,
+        "name": "Dry Rajma",
+        "price": {
+            "Half": 70,
+            "Full": 90
+        },
+        "mrp":100,
+        "image": "images/dryrajma.jpeg"
     },
     {
-        "id": 98,
+        "id": 37,
+        "name": "Rajma Masala",
+        "price": {
+            "Half": 80,
+            "Full": 100
+        },
+        "mrp":100,
+        "image": "images/rajmamasala.webp"
+    },
+    {
+        "id": 38,
+        "name": "Butter Gravy",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/buttergravy.jpeg"
+    },
+    {
+        "id": 39,
+        "name": "kadhi",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/kadhi.jpeg"
+    },
+    {
+        "id": 40,
+        "name": "Jeera Aloo",
+        "price": {
+            "Half": 70,
+            "Full": 100
+        },
+        "mrp":100,
+        "image": "images/jeeraaloo.jpeg"
+    },
+    {
+        "id": 41,
+        "name": "Aloo Matar",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/aloomatar.jpeg"
+    },
+    {
+        "id": 42,
         "name": "Plain Rice",
-        "price": 40,
+        "price": 30,
         "mrp":50,
         "image": "images/plainrice.jpeg"
     },
     {
-        "id": 99,
+        "id": 43,
         "name": "Jeera Rice",
-        "price": 70,
-        "mrp":90,
+        "price": 40,
+        "mrp":60,
         "image": "images/jeerarice.jpeg"
+    },
+    {
+        "id": 44,
+        "name": "Veg Pulao",
+        "price": {
+            "Half": 70,
+            "Full": 100
+        },
+        "mrp":100,
+        "image": "images/vegpulao.jpeg"
+    },
+    {
+        "id": 45,
+        "name": "Fried Rice",
+        "price": {
+            "Half": 70,
+            "Full": 100
+        },
+        "mrp":100,
+        "image": "images/friedrice.jpeg"
+    },
+    {
+        "id": 46,
+        "name": "Matar Pulao",
+        "price": {
+            "Half": 70,
+            "Full": 100
+        },
+        "mrp":100,
+        "image": "images/matarpulao.jpeg"
+    },
+    {
+        "id": 47,
+        "name": "Veg Pulao",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },
+        "mrp":100,
+        "image": "images/vegpulao.jpeg"
+    },
+    {
+        "id": 48,
+        "name": "Plain Naan",
+        "price": 20,
+        "mrp":30,
+        "image": "images/plainnaan.jpeg"
+    },
+    {
+        "id": 49,
+        "name": "Butter Naan",
+        "price": 25,
+        "mrp":35,
+        "image": "images/butternaan.jpeg"
+    },
+    {
+        "id": 50,
+        "name": "Stuff Naan",
+        "price": 30,
+        "mrp":40,
+        "image": "images/stuffnaan.jpeg"
+    },
+    {
+        "id": 51,
+        "name": "Onion Naan",
+        "price": 30,
+        "mrp":40,
+        "image": "images/onionnaan.jpeg"
+    },
+    {
+        "id": 52,
+        "name": "Cheese Naan",
+        "price": 40,
+        "mrp":50,
+        "image": "images/cheesenaan.jpeg"
+    },
+    {
+        "id": 53,
+        "name": "Garlic Naan",
+        "price": 40,
+        "mrp":50,
+        "image": "images/garlicnaan.jpeg"
+    },
+    {
+        "id": 54,
+        "name": "Tandoori Roti",
+        "price": 8,
+        "mrp":12,
+        "image": "images/tandooriroti.jpeg"
+    },
+    {
+        "id": 55,
+        "name": "Tawa Roti",
+        "price": 8,
+        "mrp":12,
+        "image": "images/tawaroti.jpeg"
+    },
+    {
+        "id": 56,
+        "name": "Ajwain Roti",
+        "price": 10,
+        "mrp":15,
+        "image": "images/ajwainroti.jpeg"
+    },
+    {
+        "id": 57,
+        "name": "Missi Roti",
+        "price": 15,
+        "mrp":20,
+        "image": "images/missiroti.jpeg"
+    },
+    {
+        "id": 58,
+        "name": "Onion Roti",
+        "price": 20,
+        "mrp":25,
+        "image": "images/onionroti.jpeg"
+    },
+    {
+        "id": 59,
+        "name": "Garlic Roti",
+        "price": 25,
+        "mrp":30,
+        "image": "images/garlicroti.jpeg"
+    },
+    {
+        "id": 60,
+        "name": "Lachha Paratha",
+        "price": 20,
+        "mrp":25,
+        "image": "images/lachhaparatha.jpeg"
+    },
+    {
+        "id": 61,
+        "name": "Aloo Paratha",
+        "price": 25,
+        "mrp":30,
+        "image": "images/alooparatha.jpeg"
+    },
+    {
+        "id": 62,
+        "name": "Onion Paratha",
+        "price": 30,
+        "mrp":35,
+        "image": "images/onionparatha.jpeg"
+    },
+    {
+        "id": 63,
+        "name": "Stuff Paratha",
+        "price": 30,
+        "mrp":35,
+        "image": "images/stuffparatha.jpeg"
+    },
+    {
+        "id": 64,
+        "name": "Gobhi Paratha",
+        "price": 40,
+        "mrp":50,
+        "image": "images/gobhiparatha.jpeg"
+    },
+    {
+        "id": 65,
+        "name": "Paneer Paratha",
+        "price": 40,
+        "mrp":50,
+        "image": "images/Paneerparatha.jpeg"
+    },
+    {
+        "id": 66,
+        "name": "Lachha Paratha",
+        "price": 20,
+        "mrp":25,
+        "image": "images/lachhaparatha.jpeg"
+    },
+    {
+        "id": 67,
+        "name": "Mix Rayta",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/mixrayta.jpeg"
+    },
+    {
+        "id": 68,
+        "name": "Veg Rayta",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/vegrayta.jpg"
+    },
+    {
+        "id": 69,
+        "name": "Bundi Rayta",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/bundirayta.jpeg"
+    },
+    {
+        "id": 70,
+        "name": "Jeera Dahi",
+        "price": {
+            "Half": 30,
+            "Full": 50
+        },
+        "mrp":50,
+        "image": "images/jeeradahi.jpeg"
+    },
+    {
+        "id": 71,
+        "name": "Plain Dahi",
+        "price": {
+            "Half": 30,
+            "Full": 40
+        },
+        "mrp":50,
+        "image": "images/plaindahi.jpeg"
+    },
+    {
+        "id": 72,
+        "name": "Simple Salad",
+        "price": 20,
+        "mrp":30,
+        "image": "images/simplesalad.jpeg"
+    },
+    {
+        "id": 73,
+        "name": "Onion Salad",
+        "price": 30,
+        "mrp":40,
+        "image": "images/onionsalad.jpeg"
+    },
+    {
+        "id": 74,
+        "name": "Green Salad",
+        "price": 40,
+        "mrp":50,
+        "image": "images/greensalad.jpeg"
+    },
+    {
+        "id": 75,
+        "name": "Cheese Chilli",
+        "price": {
+            "Half": 100,
+            "Full": 150
+        },        "mrp":140,
+        "image": "images/cheesechilli.jpeg"
+    },
+    {
+        "id": 76,
+        "name": "Mushroom Chilli",
+        "price": {
+            "Half": 90,
+            "Full": 130
+        },        "mrp":140,
+        "image": "images/mushroomchilli.jpeg"
+    },
+    {
+        "id": 77,
+        "name": "manchurian",
+        "price": {
+            "Half": 70,
+            "Full": 110
+        },        "mrp":100,
+        "image": "images/manchurian.jpg"
     }
-]   
+    
+]
