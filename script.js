@@ -37,65 +37,62 @@ let cartCount = 0;
 let cartCountElement = document.getElementById("cart-count"); // Declare cartCountElement in the global scope
 
 // Event delegation for "Add to Cart" functionality
-document.querySelector(".Burger").addEventListener("click", (event) => {
+document.querySelector(".paneer").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Sandwich").addEventListener("click", (event) => {
+document.querySelector(".mushroom").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Pasta").addEventListener("click", (event) => {
+document.querySelector(".dal").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Single_topping").addEventListener("click", (event) => {
+document.querySelector(".kofta").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Double_topping").addEventListener("click", (event) => {
+document.querySelector(".chaap").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Premium").addEventListener("click", (event) => {
+document.querySelector(".chana").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Chinese").addEventListener("click", (event) => {
+document.querySelector(".vegetable").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Shakes").addEventListener("click", (event) => {
+document.querySelector(".rice").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Garlic").addEventListener("click", (event) => {
+document.querySelector(".naan").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Wrap").addEventListener("click", (event) => {
+document.querySelector(".roti").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Chaap").addEventListener("click", (event) => {
+document.querySelector(".paratha").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Momos").addEventListener("click", (event) => {
+document.querySelector(".rayta").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Snacks").addEventListener("click", (event) => {
+document.querySelector(".salad").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Vegetables").addEventListener("click", (event) => {
+document.querySelector(".chinese").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-document.querySelector(".Roti").addEventListener("click", (event) => {
-  handleAddToCartClick(event);
-});
 
 function handleAddToCartClick(event) {
   const button = event.target.closest(".add-to-cart");
@@ -516,25 +513,25 @@ http.send();
 http.onload = function () {
   if (this.readyState == 4 && this.status == 200) {
 let products = JSON.parse(this.responseText);
-let Burger = "";
-let Sandwich = "";
-let Pasta = "";
-let Single = "";
-let Double = "";
-let Premium = "";
-let Chinese = "";
-let Shakes = "";
-let Garlic = "";
-let Wrap = "";
-let Vegetables = "";
-let Roti = "";
-let Snacks = "";
-let Chaap = "";
+let paneer = "";
+let mushroom = "";
+let dal = "";
+let kofta = "";
+let chaap = "";
+let chana = "";
+let vegetable = "";
+let rice = "";
+let naan = "";
+let roti = "";
+let paratha = "";
+let rayta = "";
+let salad = "";
+let chinese = "";
 let Momos = "";
 for (let i = 0; i < products.length; i++) {
 const item = products[i];
 if (i < 6) {
-  Single += `
+  paneer += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Small) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -555,7 +552,7 @@ if (i < 6) {
   `;
 }
 if (i >= 6 && i < 12) {
-  Double += `
+  mushroom += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Small) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -577,7 +574,7 @@ if (i >= 6 && i < 12) {
   `;
 }
 if (i >= 12 && i < 20) {
-  Premium += `
+  dal += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Regular) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -599,7 +596,7 @@ if (i >= 12 && i < 20) {
   `;
 }
 if (i >= 20 && i < 23) {
-  Burger += `
+  kofta += `
 <div class="box" >
 <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
 <img src="${item.image}" alt="img">
@@ -621,7 +618,7 @@ if (i >= 20 && i < 23) {
 `;
 }
 if (i >= 23 && i < 27) {
-  Sandwich += `
+  chaap += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -643,7 +640,7 @@ if (i >= 23 && i < 27) {
   `;
 }
 if (i >= 27 && i < 30 || i === 68 || i === 69) {
-  Wrap +=`
+  chana +=`
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -665,7 +662,7 @@ if (i >= 27 && i < 30 || i === 68 || i === 69) {
   `;
   }
 if (i >= 30 && i < 33) {
-    Garlic += `
+    vegetable += `
     <div class="box" >
     <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
     <img src="${item.image}" alt="img">
@@ -687,7 +684,7 @@ if (i >= 30 && i < 33) {
     `;
 }
 if (i >= 33 && i < 38) {
-  Pasta +=`
+  rice +=`
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -709,7 +706,7 @@ if (i >= 33 && i < 38) {
   `;
 }
 if (i >= 38 && i < 44) {
-  Shakes +=`
+  naan +=`
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -731,7 +728,7 @@ if (i >= 38 && i < 44) {
   `;
 }
 if (i >= 44 && i < 50) {
-Chaap +=`
+roti +=`
 <div class="box" >
 <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
 <img src="${item.image}" alt="img">
@@ -753,7 +750,7 @@ Chaap +=`
 `;
 }
 if (i >= 50 && i < 61) {
-  Chinese += `
+  paratha += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -775,7 +772,7 @@ if (i >= 50 && i < 61) {
   `;
 }
 if (i >= 61 && i < 64) {
-Momos += `
+rayta += `
 <div class="box" >
 <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
 <img src="${item.image}" alt="img">
@@ -797,7 +794,7 @@ Momos += `
 `;
 }
 if (i >= 64 && i < 68) {
-  Snacks += `
+  salad += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -819,7 +816,7 @@ if (i >= 64 && i < 68) {
   `;
 }
 if (i >= 70 && i < 87) {
-  Vegetables += `
+  chinese += `
   <div class="box" >
   <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
   <img src="${item.image}" alt="img">
@@ -838,44 +835,21 @@ if (i >= 70 && i < 87) {
   </div>
   `
 }
-if (i >= 87 && i < 99) {
-  Roti += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-  <span class="pricee product-price"> <b>₹ ${item.price}</b> 
-  <del class="mrp">₹ ${item.mrp}</del>
-   <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
-   </span>
-   <div class="stars"></div>
-  
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
-  <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  
-  </div>
-  </div>
-  </div>
-  `;
 }
-}
-document.querySelector(".Burger").innerHTML = Burger;
-document.querySelector(".Sandwich").innerHTML = Sandwich;
-document.querySelector(".Pasta").innerHTML = Pasta;
-document.querySelector(".Single_topping").innerHTML = Single;
-document.querySelector(".Double_topping").innerHTML = Double;
-document.querySelector(".Premium").innerHTML = Premium;
-document.querySelector(".Chinese").innerHTML = Chinese;
-document.querySelector(".Shakes").innerHTML = Shakes;
-document.querySelector(".Garlic").innerHTML = Garlic;
-document.querySelector(".Wrap").innerHTML = Wrap;
-document.querySelector(".Chaap").innerHTML = Chaap;
-document.querySelector(".Momos").innerHTML = Momos;
-document.querySelector(".Snacks").innerHTML = Snacks;
-document.querySelector(".Vegetables").innerHTML = Vegetables;
-document.querySelector(".Roti").innerHTML = Roti;
+document.querySelector(".paneer").innerHTML = paneer;
+document.querySelector(".mushroom").innerHTML = mushroom;
+document.querySelector(".dal").innerHTML = dal;
+document.querySelector(".kofta").innerHTML = kofta;
+document.querySelector(".chaap").innerHTML = chaap;
+document.querySelector(".chana").innerHTML = chana;
+document.querySelector(".vegetable").innerHTML = vegetable;
+document.querySelector(".rice").innerHTML = rice;
+document.querySelector(".naan").innerHTML = naan;
+document.querySelector(".roti").innerHTML = roti;
+document.querySelector(".paratha").innerHTML = paratha;
+document.querySelector(".rayta").innerHTML = rayta;
+document.querySelector(".salad").innerHTML = salad;
+document.querySelector(".chinese").innerHTML = chinese;
 }
 };
 
