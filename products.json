@@ -97,17 +97,17 @@
             "Full": 150
         },
         "mrp":130,
-        "image": "images/paneerbhurji.jpeg"
+        "image": "images/paneerbhurji.webp"
     },
     {
         "id": 11,
-        "name": "Paneer Do Pyaja",
+        "name": "Paneer Do Pyaza",
         "price": {
             "Half": 90,
             "Full": 130
         },
         "mrp":100,
-        "image": "images/paneerdopyaja.jpeg"
+        "image": "images/paneerdopyaza.jpeg"
     },
     {
         "id": 12,
@@ -346,7 +346,7 @@
             "Full": 90
         },
         "mrp":100,
-        "image": "images/butterrajma.jpeg"
+        "image": "images/butterrajma.png"
     },
     {
         "id": 36,
@@ -613,7 +613,7 @@
             "Full": 50
         },
         "mrp":50,
-        "image": "images/vegrayta.jpg"
+        "image": "images/vegrayta.jpeg"
     },
     {
         "id": 69,
