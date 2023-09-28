@@ -126,7 +126,7 @@
             "Full": 120
         },
         "mrp":100,
-        "image": "Mushroommatar.jpeg"
+        "image": "images/mma.jpeg"
     },
     {
         "id": 14,
@@ -136,7 +136,7 @@
             "Full": 130
         },
         "mrp":100,
-        "image": "Mushroommasala.jpeg"
+        "image": "images/mm.jpeg"
     },
     {
         "id": 15,
@@ -146,7 +146,7 @@
             "Full": 130
         },
         "mrp":100,
-        "image": "Mushroommalai.jpeg"
+        "image": "images/mushmalai.jpeg"
     },
     {
         "id": 16,
@@ -156,7 +156,7 @@
             "Full": 130
         },
         "mrp":100,
-        "image": "Mushroomkadai.jpeg"
+        "image": "images/mk.jpeg"
     },
     {
         "id": 17,
@@ -166,7 +166,7 @@
             "Full": 130
         },
         "mrp":100,
-        "image": "Mushroompyaza.jpeg"
+        "image": "images/mp.jpeg"
     },
     {
         "id": 18,
@@ -176,7 +176,7 @@
             "Full": 100
         },
         "mrp":100,
-        "image": "images/dalmakhani.jpeg"
+        "image": "images/Mushroompyaza.jpeg"
     },
     {
         "id": 19,
