@@ -513,6 +513,49 @@ http.send();
 http.onload = function () {
   if (this.readyState == 4 && this.status == 200) {
 let products = JSON.parse(this.responseText);
+function customize(item) {
+  return `
+    <div class="box" >
+    <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
+    <img src="${item.image}" alt="img" onclick="zoomImage(this)">
+    <h3 class="product-name" >${item.name}</h3>
+     <div class="stars"></div>
+    <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
+    <select class="size" id="dropdown-options-${item.id}">
+      <option value="Half">Half - ₹${item.price.Half}</option>
+      <option value="Full">Full - ₹${item.price.Full}</option>
+    </select><br><br>
+  </div>
+  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
+        <div class="Go-to-Cart" style="display: none;">
+    <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
+    </div>
+    </div>
+    `;
+}
+
+function uncustomize(item) {
+  return `
+  <div class="box" >
+  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
+  <img src="${item.image}" alt="img" onclick="zoomImage(this)">
+  <h3 class="product-name" >${item.name}</h3>
+  <span class="pricee product-price"> <b>₹ ${item.price}</b> 
+  <del class="mrp">₹ ${item.mrp}</del>
+   <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
+   </span>
+   <div class="stars"></div>
+  
+  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
+  <div class="Go-to-Cart" style="display: none;">
+  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
+  </div>
+  
+  </div>
+  </div>
+  </div>
+  `;
+}
 let paneer = "";
 let mushroom = "";
 let dal = "";
@@ -531,316 +574,56 @@ let Momos = "";
 for (let i = 0; i < products.length; i++) {
 const item = products[i];
 if (i < 12) {
+  paneer += customize(item);
+
   paneer += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   </span>
-   <div class="stars"></div>
-   <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-   <select class="size" id="dropdown-options-${item.id}">
-     <option value="Small">Half - ₹${item.price.Half}</option>
-     <option value="Regular">Full - ₹${item.price.Full}</option>
-   </select><br><br>
- </div>
- <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-     <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+<div class="image-zoom-container" id="image-zoom-container">
+  <span class="close-zoom" onclick="closeZoomImage()">&times;</span>
+  <img class="zoomed-image" id="zoomed-image">
+</div>
+`;
 }
 if (i >= 12 && i < 17) {
-  mushroom += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   </span>
-   <div class="stars"></div>
-   <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-   <select class="size" id="dropdown-options-${item.id}">
-     <option value="Small">Half - ₹${item.price.Half}</option>
-     <option value="Regular">Full - ₹${item.price.Full}</option>
-   </select><br><br>
- </div>
- <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-      <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+  mushroom += customize(item);
 }
 if (i >= 17 && i < 24) {
-  dal += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   <div class="stars"></div>
-  <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-  <select class="size" id="dropdown-options-${item.id}">
-    <option value="Half">Half - ₹${item.price.Half}</option>
-    <option value="Full">Full - ₹${item.price.Full}</option>
-  </select><br><br>
-</div>
-<button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-      <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+  dal += customize(item);
 }
 if (i >= 24 && i < 26) {
-  kofta += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   <div class="stars"></div>
-  <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-  <select class="size" id="dropdown-options-${item.id}">
-    <option value="Half">Half - ₹${item.price.Half}</option>
-    <option value="Full">Full - ₹${item.price.Full}</option>
-  </select><br><br>
-</div>
-<button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-      <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+  kofta += customize(item);
 }
 if (i >= 26 && i < 28) {
-  chaap += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   <div class="stars"></div>
-  <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-  <select class="size" id="dropdown-options-${item.id}">
-    <option value="Half">Half - ₹${item.price.Half}</option>
-    <option value="Full">Full - ₹${item.price.Full}</option>
-  </select><br><br>
-</div>
-<button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-      <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+  chaap += customize(item);
 }
 if (i >= 28 && i < 32) {
-  chana +=`
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   <div class="stars"></div>
-  <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-  <select class="size" id="dropdown-options-${item.id}">
-    <option value="Half">Half - ₹${item.price.Half}</option>
-    <option value="Full">Full - ₹${item.price.Full}</option>
-  </select><br><br>
-</div>
-<button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-      <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+  chana += customize(item);
 }
 if (i >= 32 && i < 41) {
-    vegetable += `
-    <div class="box" >
-    <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-    <img src="${item.image}" alt="img">
-    <h3 class="product-name" >${item.name}</h3>
-     <div class="stars"></div>
-    <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-    <select class="size" id="dropdown-options-${item.id}">
-      <option value="Half">Half - ₹${item.price.Half}</option>
-      <option value="Full">Full - ₹${item.price.Full}</option>
-    </select><br><br>
-  </div>
-  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-        <div class="Go-to-Cart" style="display: none;">
-    <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-    </div>
-    </div>
-    `;
+    vegetable += customize(item);
 }
 if (i >= 41 && i < 43) {
-  rice += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   <div class="stars"></div>
-  <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-  <select class="size" id="dropdown-options-${item.id}">
-    <option value="Half">Half - ₹${item.price.Half}</option>
-    <option value="Full">Full - ₹${item.price.Full}</option>
-  </select><br><br>
-</div>
-<button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-      <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `;
+  rice += customize(item);
 }
 if (i >= 43 && i < 46) {
-  rice +=`
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-  <span class="pricee product-price"> <b>₹ ${item.price}</b> 
-  <del class="mrp">₹ ${item.mrp}</del>
-   <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
-   </span>
-   <div class="stars"></div>
-  
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
-  <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  
-  </div>
-  </div>
-  </div>
-  `;
+  rice += uncustomize(item);
 }
 if (i >= 47 && i < 53) {
-  naan +=`
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-  <span class="pricee product-price"> <b>₹ ${item.price}</b> 
-  <del class="mrp">₹ ${item.mrp}</del>
-   <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
-   </span>
-   <div class="stars"></div>
-  
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
-  <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  
-  </div>
-  </div>
-  </div>
-  `;
+  naan += uncustomize(item);
 }
 if (i >= 53 && i < 59) {
-roti +=`
-<div class="box" >
-<span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
-<img src="${item.image}" alt="img">
-<h3 class="product-name" >${item.name}</h3>
-<span class="pricee product-price"> <b>₹ ${item.price}</b> 
-<del class="mrp">₹ ${item.mrp}</del>
- <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
- </span>
- <div class="stars"></div>
-
-<h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
-<div class="Go-to-Cart" style="display: none;">
-<h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-</div>
-
-</div>
-</div>
-</div>
-`;
+roti += uncustomize(item);
 }
 if (i >= 59 && i < 65) {
-  paratha += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-  <span class="pricee product-price"> <b>₹ ${item.price}</b> 
-  <del class="mrp">₹ ${item.mrp}</del>
-   <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
-   </span>
-   <div class="stars"></div>
-  
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
-  <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  
-  </div>
-  </div>
-  </div>
-  `;
+  paratha += uncustomize(item);
 }
 if (i >= 66 && i < 71) {
-rayta +=  `
-<div class="box" >
-<span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-<img src="${item.image}" alt="img">
-<h3 class="product-name" >${item.name}</h3>
- <div class="stars"></div>
-<div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-<select class="size" id="dropdown-options-${item.id}">
-  <option value="Half">Half - ₹${item.price.Half}</option>
-  <option value="Full">Full - ₹${item.price.Full}</option>
-</select><br><br>
-</div>
-<button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
-    <div class="Go-to-Cart" style="display: none;">
-<h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-</div>
-</div>
-`;
+rayta +=  customize(item);
 }
 if (i >= 71 && i < 74) {
-  salad += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-  <span class="pricee product-price"> <b>₹ ${item.price}</b> 
-  <del class="mrp">₹ ${item.mrp}</del>
-   <span class="rev"> 4.7 <i class="fas fa-star"></i></span>
-   </span>
-   <div class="stars"></div>
-  
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
-  <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  
-  </div>
-  </div>
-  </div>
-  `;
+  salad += uncustomize(item);
 }
 if (i >= 74 && i < 77) {
-  chinese += `
-  <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
-  <img src="${item.image}" alt="img">
-  <h3 class="product-name" >${item.name}</h3>
-   <div class="stars"></div>
-   <div class="dropdownn" id="dropdown-${item.id}" style="display: flex;">
-   <select class="size" id="dropdown-options-${item.id}">
-     <option value="Half">Half - ₹${item.price.Half}</option>
-     <option value="Full">Full - ₹${item.price.Full}</option>
-   </select><br><br>
- </div>
- <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
- <div class="Go-to-Cart" style="display: none;">
- <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
-  </div>
-  `
+  chinese += customize(item);
 }
 }
 document.querySelector(".paneer").innerHTML = paneer;
@@ -899,3 +682,18 @@ document.addEventListener("DOMContentLoaded", function () {
     modeIcon.classList.add("fa-moon");
   }
 });
+
+// JavaScript function to zoom in on an image
+function zoomImage(image) {
+  const zoomedImage = document.getElementById('zoomed-image');
+  const imageZoomContainer = document.getElementById('image-zoom-container');
+  
+  zoomedImage.src = image.src;
+  imageZoomContainer.style.display = 'block';
+}
+
+// JavaScript function to close the zoomed-in image
+function closeZoomImage() {
+  const imageZoomContainer = document.getElementById('image-zoom-container');
+  imageZoomContainer.style.display = 'none';
+}
