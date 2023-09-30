@@ -157,6 +157,7 @@ section {
   width: 100%;
   padding: 1rem;
   animation: float 3s linear infinite;
+  border-radius: 8rem;
 }
 
 @keyframes float {
