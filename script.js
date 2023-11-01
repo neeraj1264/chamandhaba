@@ -422,16 +422,11 @@ const emptyCell8 = document.createElement("td");
   const submitrow = document.createElement("tr");
 
   const emptyCell = document.createElement("td");
-  emptyCell.setAttribute("colspan", "3"); 
+  emptyCell.setAttribute("colspan", "2"); 
  submitrow.appendChild(emptyCell);
 
-  // const emptyCell2 = document.createElement("td");
-  // emptyCell2.setAttribute("colspan", "1"); 
-  //submitrow.appendChild(emptyCell2);
-
     const submitCell = document.createElement("td");
-    submitCell.setAttribute("colspan", "1"); // Span 3 columns for the submit button
-    submitCell.classList.add("submit-cell"); // Add a custom class to style the submit cell
+    submitCell.setAttribute("colspan", "2"); // Span 3 columns for the submit button
    submitrow.appendChild(submitCell);
       // Create the "Submit Order" button
    const submitButton = document.createElement("button");
@@ -800,7 +795,7 @@ function showPopup() {
   // Create the popup element
   var popup = document.createElement("div");
   popup.className = "popup";
-  
+
   // Create the close button (X button) in the top right corner
   var closeButton = document.createElement("button");
   closeButton.textContent = "X";
