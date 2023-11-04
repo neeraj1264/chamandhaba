@@ -160,7 +160,7 @@ function submitOrder(cartData) {
   message +=  `Service Charge = ₹ 20.00\n`
 
  // Replace 'YOUR_WHATSAPP_NUMBER' with the actual WhatsApp number
- var whatsappNumber = '+917015823645';
+ var whatsappNumber = '+919896755380';
 
  // Construct the WhatsApp link
  var whatsappLink = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + encodeURIComponent(message);
