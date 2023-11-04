@@ -8,7 +8,7 @@ menubar.onclick = () => {
 };
 // Add a click event listener to all navigation bar elements except the menu icon
 const navbarItems = document.querySelectorAll(".navbar a:not(#menu-bars)");
-navbarItems.forEach(item => {
+navbarItems.forEach((item) => {
   item.addEventListener("click", () => {
     if (mynav.classList.contains("active")) {
       menubar.classList.toggle("fa-times");
@@ -93,26 +93,31 @@ document.querySelector(".chinese").addEventListener("click", (event) => {
   handleAddToCartClick(event);
 });
 
-
 function handleAddToCartClick(event) {
   const button = event.target.closest(".add-to-cart");
   if (button) {
-    const GotoCart = button.parentNode.querySelector(".Go-to-Cart");
+    if (!isUserSignedUp()) {
+      event.preventDefault();
+      alert("sign up first");
+      window.location.href = "signup.html";
+    } else if (isUserSignedUp()) {
+      const GotoCart = button.parentNode.querySelector(".Go-to-Cart");
 
-    button.style.display = "none";
-    GotoCart.style.display = "flex";
+      button.style.display = "none";
+      GotoCart.style.display = "flex";
 
-    // Update cart count only when "Order Now" button is clicked
-    cartCount++;
-    cartCountElement.textContent = cartCount;
+      // Update cart count only when "Order Now" button is clicked
+      cartCount++;
+      cartCountElement.textContent = cartCount;
+    }
   }
 }
 
 // ---------------------cart Data code-----------------------------
 
-function  calculateitemTotal() {
+function calculateitemTotal() {
   let Total = 0;
-  
+
   for (const itemId in cartData) {
     if (cartData.hasOwnProperty(itemId)) {
       Total += cartData[itemId].quantity * cartData[itemId].price;
@@ -121,7 +126,7 @@ function  calculateitemTotal() {
   return `₹ ${Total.toFixed(2)}`;
 }
 
-function  calculateTotal() {
+function calculateTotal() {
   let Total = 20;
   for (const itemId in cartData) {
     if (cartData.hasOwnProperty(itemId)) {
@@ -130,25 +135,21 @@ function  calculateTotal() {
   }
   return `₹ ${Total.toFixed(2)}`;
 }
+function getRandom4DigitNumber() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
 function submitOrder(cartData) {
   // Retrieve the current order number from localStorage
-  let currentOrderNumber = localStorage.getItem("currentOrderNumber");
+  const currentOrderNumber = getRandom4DigitNumber();
 
-  // If there's no stored order number, start with 1
-  if (!currentOrderNumber) {
-    currentOrderNumber = 1;
-  } else {
-    // If there's a stored order number, increment it by 1
-    currentOrderNumber = parseInt(currentOrderNumber) + 1;
-  }
+  const customerData = JSON.parse(localStorage.getItem("userData"));
 
-  const formattedOrderNumber = String(currentOrderNumber).padStart(4, '0');
-
-  localStorage.setItem("currentOrderNumber", currentOrderNumber);
-
- var message = `Order  : *ORD-${formattedOrderNumber}*\n`;
+ var message = `Order      : *ORD-${currentOrderNumber}*\n`;
+ message += `Phone    : *${customerData.mobileNumber}*\n`;
+ message += `Name     : *${customerData.name}*\n`;
  var totalAmount =  calculateTotal();
- message  += `Amount :- *${totalAmount}*\n\n`;
+ message  += `Amount : *${totalAmount}*\n`;
+ message += `Address : *${customerData.address}*\n\n`;
  message  += '----------items----------\n\n'
  for (const itemId in cartData) {
    if (cartData.hasOwnProperty(itemId)) {
@@ -159,7 +160,7 @@ function submitOrder(cartData) {
   message +=  `Service Charge = ₹ 20.00\n`
 
  // Replace 'YOUR_WHATSAPP_NUMBER' with the actual WhatsApp number
- var whatsappNumber = '+919896755380';
+ var whatsappNumber = '+917015823645';
 
  // Construct the WhatsApp link
  var whatsappLink = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + encodeURIComponent(message);
@@ -171,6 +172,7 @@ function submitOrder(cartData) {
 setTimeout(function () {
   showPopup();
 }, 5000);
+
 }
 
 // -------------------------dropdown_menu_Start-----------------------------------
@@ -183,7 +185,7 @@ setTimeout(function () {
 //     // Close the dropdown after an option is clicked
 //     dropdownContent.style.display = "none";
 //   });
-// }); 
+// });
 
 // menuButton.addEventListener("click", () => {
 //   // Toggle the dropdown when the menu button is clicked
@@ -208,7 +210,6 @@ let isCartModalOpen = false;
 // -------------------------Cart_data_Start------------------------------------
 
 function showCartModal() {
-
   if (Object.keys(cartData).length === 0) {
     closeCartModal(); // Close the modal
     return;
@@ -229,9 +230,9 @@ function showCartModal() {
   const cartItemsContainer = document.getElementById("cartItems");
   cartItemsContainer.innerHTML = "";
 
-   // Apply a max-height and overflow-y style to create a scrollbar
-   cartItemsContainer.style.maxHeight = "500px"; // Adjust the value as needed
-   cartItemsContainer.style.overflowX = "auto";
+  // Apply a max-height and overflow-y style to create a scrollbar
+  cartItemsContainer.style.maxHeight = "500px"; // Adjust the value as needed
+  cartItemsContainer.style.overflowX = "auto";
 
   const table = document.createElement("table");
   table.classList.add("cart-table");
@@ -245,8 +246,8 @@ function showCartModal() {
       headerName === "Name" ||
       headerName === "Quantity" ||
       headerName === "Image" ||
-      headerName === "Price" 
-      ) {
+      headerName === "Price"
+    ) {
       headerCell.classList.add("header-spaced"); // Add the class for spacing
     }
     headerRow.appendChild(headerCell);
@@ -273,7 +274,7 @@ function showCartModal() {
 
       const quantityCell = document.createElement("td");
       quantityCell.classList.add("center-align");
-      
+
       const minusIcon = document.createElement("i");
       minusIcon.classList.add("fas", "fa-minus", "quantity-icon");
       minusIcon.setAttribute("data-item-id", itemId);
@@ -283,27 +284,24 @@ function showCartModal() {
           item.quantity--;
           quantityValue.textContent = item.quantity;
           updatePrice(item, priceCell);
-           Itemtotalcell.textContent = `${ calculateitemTotal()}` ; // Update the total amount
-           totalcell.textContent = `${ calculateTotal()}` ; // Update the total amount
-
-        }
-        else {
+          Itemtotalcell.textContent = `${calculateitemTotal()}`; // Update the total amount
+          totalcell.textContent = `${calculateTotal()}`; // Update the total amount
+        } else {
           // Remove the item from the cart when quantity is less than one
           delete cartData[itemId];
           showCartModal(); // Refresh the cart modal after deleting an item
           updateCartCount(); // Update the cart count
-           Itemtotalcell.textContent = `${ calculateitemTotal()}`; // Update the total amount
-           totalcell.textContent = `${ calculateTotal()}` ; // Update the total amount
-
-              }
+          Itemtotalcell.textContent = `${calculateitemTotal()}`; // Update the total amount
+          totalcell.textContent = `${calculateTotal()}`; // Update the total amount
+        }
       });
       quantityCell.appendChild(minusIcon);
-      
+
       const quantityValue = document.createElement("span");
-      quantityValue.classList.add("item-quantity")
+      quantityValue.classList.add("item-quantity");
       quantityValue.textContent = item.quantity;
       quantityCell.appendChild(quantityValue);
-      
+
       const plusIcon = document.createElement("i");
       plusIcon.classList.add("fas", "fa-plus", "quantity-icon");
       plusIcon.setAttribute("data-item-id", itemId);
@@ -312,11 +310,11 @@ function showCartModal() {
         item.quantity++;
         quantityValue.textContent = item.quantity;
         updatePrice(item, priceCell);
-         Itemtotalcell.textContent = `${ calculateitemTotal()}`; // Update the total amount
-         totalcell.textContent = `${ calculateTotal()}` ; // Update the total amount
+        Itemtotalcell.textContent = `${calculateitemTotal()}`; // Update the total amount
+        totalcell.textContent = `${calculateTotal()}`; // Update the total amount
       });
       quantityCell.appendChild(plusIcon);
-      
+
       cartRow.appendChild(quantityCell);
 
       const priceCell = document.createElement("td");
@@ -325,127 +323,126 @@ function showCartModal() {
       cartRow.appendChild(priceCell);
 
       table.appendChild(cartRow);
-
-     }
+    }
   }
-// ------------------------------------horizontal-line start------------------------------------
+  // ------------------------------------horizontal-line start------------------------------------
 
-const emptyFooterRow1 = document.createElement("tr");
+  const emptyFooterRow1 = document.createElement("tr");
 
-const emptyFooterCell1 = document.createElement("td");
-emptyFooterCell1.classList.add("footer-hr-cell"); // Add a class to this cell
-emptyFooterRow1.appendChild(emptyFooterCell1);
+  const emptyFooterCell1 = document.createElement("td");
+  emptyFooterCell1.classList.add("footer-hr-cell"); // Add a class to this cell
+  emptyFooterRow1.appendChild(emptyFooterCell1);
 
-const emptyFooterCell2 = document.createElement("td");
-emptyFooterCell2.classList.add("footer-hr-cell"); // Add a class to this cell
-emptyFooterRow1.appendChild(emptyFooterCell2);
+  const emptyFooterCell2 = document.createElement("td");
+  emptyFooterCell2.classList.add("footer-hr-cell"); // Add a class to this cell
+  emptyFooterRow1.appendChild(emptyFooterCell2);
 
-const emptyFooterCell3 = document.createElement("td");
-emptyFooterCell3.classList.add("footer-hr-cell"); // Add a class to this cell
-emptyFooterRow1.appendChild(emptyFooterCell3);
+  const emptyFooterCell3 = document.createElement("td");
+  emptyFooterCell3.classList.add("footer-hr-cell"); // Add a class to this cell
+  emptyFooterRow1.appendChild(emptyFooterCell3);
 
-const emptyFooterCell4 = document.createElement("td");
-emptyFooterCell4.classList.add("footer-hr-cell"); // Add a class to this cell
-emptyFooterRow1.appendChild(emptyFooterCell4);
+  const emptyFooterCell4 = document.createElement("td");
+  emptyFooterCell4.classList.add("footer-hr-cell"); // Add a class to this cell
+  emptyFooterRow1.appendChild(emptyFooterCell4);
 
-table.appendChild(emptyFooterRow1);
+  table.appendChild(emptyFooterRow1);
 
-// ------------------------------------Empty-row------------------------------------
+  // ------------------------------------Empty-row------------------------------------
 
-const emptyFooterRow = document.createElement("tr");
-const emptyFooterCell = document.createElement("td");
-emptyFooterCell.setAttribute("colspan", headerNames.length);
-emptyFooterRow.appendChild(emptyFooterCell);
-table.appendChild(emptyFooterRow);
+  const emptyFooterRow = document.createElement("tr");
+  const emptyFooterCell = document.createElement("td");
+  emptyFooterCell.setAttribute("colspan", headerNames.length);
+  emptyFooterRow.appendChild(emptyFooterCell);
+  table.appendChild(emptyFooterRow);
 
-// ------------------------------------itemtotal-row------------------------------------
+  // ------------------------------------itemtotal-row------------------------------------
 
-const itemtotal = document.createElement("tr");
+  const itemtotal = document.createElement("tr");
 
-const emptyCell3 = document.createElement("td");
-      emptyCell3.textContent = ("Item-Total");
-      emptyCell3.classList.add("cart-footer");
-      itemtotal.appendChild(emptyCell3);
+  const emptyCell3 = document.createElement("td");
+  emptyCell3.textContent = "Item-Total";
+  emptyCell3.classList.add("cart-footer");
+  itemtotal.appendChild(emptyCell3);
 
-const emptyCell4 = document.createElement("td");
-  emptyCell4.setAttribute("colspan", "2"); 
+  const emptyCell4 = document.createElement("td");
+  emptyCell4.setAttribute("colspan", "2");
   itemtotal.appendChild(emptyCell4);
 
-  const  Itemtotalcell = document.createElement("td");
-   Itemtotalcell.textContent = `${ calculateitemTotal()}`  ;
-   Itemtotalcell.classList.add("cart-footer");
-  itemtotal.appendChild( Itemtotalcell);
+  const Itemtotalcell = document.createElement("td");
+  Itemtotalcell.textContent = `${calculateitemTotal()}`;
+  Itemtotalcell.classList.add("cart-footer");
+  itemtotal.appendChild(Itemtotalcell);
 
   table.appendChild(itemtotal);
 
-// ------------------------------------delivery-row------------------------------------
+  // ------------------------------------delivery-row------------------------------------
 
-const delivery = document.createElement("tr");
+  const delivery = document.createElement("tr");
 
-const emptyCell5 = document.createElement("td");
-      emptyCell5.textContent = ("Delivery");
-      emptyCell5.classList.add("cart-footer");
-      delivery.appendChild(emptyCell5);
+  const emptyCell5 = document.createElement("td");
+  emptyCell5.textContent = "Delivery";
+  emptyCell5.classList.add("cart-footer");
+  delivery.appendChild(emptyCell5);
 
-const emptyCell6 = document.createElement("td");
-  emptyCell6.setAttribute("colspan", "2"); 
+  const emptyCell6 = document.createElement("td");
+  emptyCell6.setAttribute("colspan", "2");
   delivery.appendChild(emptyCell6);
 
   const deliverycell = document.createElement("td");
-  deliverycell.textContent = ("₹ 20")  ;
+  deliverycell.textContent = "₹ 20";
   deliverycell.classList.add("cart-footer");
   delivery.appendChild(deliverycell);
 
   table.appendChild(delivery);
-  
-// ------------------------------------Total-row------------------------------------
 
-const Total = document.createElement("tr");
+  // ------------------------------------Total-row------------------------------------
 
-const emptyCell7 = document.createElement("td");
-      emptyCell7.textContent = ("Total");
-      emptyCell7.classList.add("cart-footer");
-      Total.appendChild(emptyCell7);
+  const Total = document.createElement("tr");
 
-const emptyCell8 = document.createElement("td");
-  emptyCell8.setAttribute("colspan", "2"); 
+  const emptyCell7 = document.createElement("td");
+  emptyCell7.textContent = "Total";
+  emptyCell7.classList.add("cart-footer");
+  Total.appendChild(emptyCell7);
+
+  const emptyCell8 = document.createElement("td");
+  emptyCell8.setAttribute("colspan", "2");
   Total.appendChild(emptyCell8);
 
-  const  totalcell = document.createElement("td");
-   totalcell.textContent = `${ calculateTotal()}`  ;
-   totalcell.classList.add("cart-footer");
-   Total.appendChild( totalcell);
+  const totalcell = document.createElement("td");
+  totalcell.textContent = `${calculateTotal()}`;
+  totalcell.classList.add("cart-footer");
+  Total.appendChild(totalcell);
 
   table.appendChild(Total);
-// ------------------------------------submit-row------------------------------------
+  // ------------------------------------submit-row------------------------------------
 
   const submitrow = document.createElement("tr");
 
   const emptyCell = document.createElement("td");
-  emptyCell.setAttribute("colspan", "2"); 
- submitrow.appendChild(emptyCell);
+  emptyCell.setAttribute("colspan", "2");
+  submitrow.appendChild(emptyCell);
 
-    const submitCell = document.createElement("td");
-    submitCell.setAttribute("colspan", "2"); // Span 3 columns for the submit button
-   submitrow.appendChild(submitCell);
-      // Create the "Submit Order" button
-   const submitButton = document.createElement("button");
-   submitButton.textContent = "Place Order";
-   submitButton.classList.add("submit-button");
-   submitButton.addEventListener("click", () => {
+  const submitCell = document.createElement("td");
+  submitCell.setAttribute("colspan", "2"); // Span 3 columns for the submit button
+  submitrow.appendChild(submitCell);
+  // Create the "Submit Order" button
+  const submitButton = document.createElement("button");
+  submitButton.textContent = "Place Order";
+  submitButton.classList.add("submit-button");
+  submitButton.addEventListener("click", () => {
     submitOrder(cartData);
-   });
-   submitCell.appendChild(submitButton); // Append the button to the submit cell
+  });
+  submitCell.appendChild(submitButton); // Append the button to the submit cell
 
-   table.appendChild(submitrow);
-   
-const emptyFooterRow2 = document.createElement("tr");
-const emptyFooterCell5 = document.createElement("td");
-emptyFooterCell5.setAttribute("colspan", headerNames.length);
-emptyFooterRow2.appendChild(emptyFooterCell5);
-table.appendChild(emptyFooterRow2);
+  table.appendChild(submitrow);
 
-   cartItemsContainer.appendChild(table);
+  const emptyFooterRow2 = document.createElement("tr");
+  const emptyFooterCell5 = document.createElement("td");
+  emptyFooterCell5.setAttribute("colspan", headerNames.length);
+  emptyFooterRow2.appendChild(emptyFooterCell5);
+  table.appendChild(emptyFooterRow2);
+
+  cartItemsContainer.appendChild(table);
 }
 function updatePrice(item, priceCell) {
   // Update the price cell with the new calculated price
@@ -498,7 +495,6 @@ function addToCartWithSize(id, name, image) {
   // hideDropdown(id);
 }
 
-
 function updateCartCount() {
   const cartCountElement = document.getElementById("cart-count");
   let cartItemCount = 0;
@@ -519,11 +515,13 @@ http.send();
 
 http.onload = function () {
   if (this.readyState == 4 && this.status == 200) {
-let products = JSON.parse(this.responseText);
-function customize(item) {
-  return `
+    let products = JSON.parse(this.responseText);
+    function customize(item) {
+      return `
     <div class="box" >
-    <span class="dis product-price"><b>${Math.round((item.mrp - item.price.Half) / item.mrp * 100)}</b>% off</span>
+    <span class="dis product-price"><b>${Math.round(
+      ((item.mrp - item.price.Half) / item.mrp) * 100
+    )}</b>% off</span>
     <img src="${item.image}" alt="img" onclick="zoomImage(this)">
     <h3 class="product-name" >${item.name}</h3>
      <div class="stars"></div>
@@ -533,18 +531,22 @@ function customize(item) {
       <option value="Full">Full - ₹${item.price.Full}</option>
     </select><br><br>
   </div>
-  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
+  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${
+    item.id
+  }', '${item.name}', '${item.image}')">Add</button>
         <div class="Go-to-Cart" style="display: none;">
     <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
     </div>
     </div>
     `;
-}
+    }
 
-function uncustomize(item) {
-  return `
+    function uncustomize(item) {
+      return `
   <div class="box" >
-  <span class="dis product-price"><b>${Math.round((item.mrp - item.price) / item.mrp * 100)}</b>% off</span>
+  <span class="dis product-price"><b>${Math.round(
+    ((item.mrp - item.price) / item.mrp) * 100
+  )}</b>% off</span>
   <img src="${item.image}" alt="img" onclick="zoomImage(this)">
   <h3 class="product-name" >${item.name}</h3>
   <span class="pricee product-price"> <b>₹ ${item.price}</b> 
@@ -553,7 +555,9 @@ function uncustomize(item) {
    </span>
    <div class="stars"></div>
   
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
+  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${
+        item.name
+      }', ${item.price}, '${item.image}') ">ADD</h2>
   <div class="Go-to-Cart" style="display: none;">
   <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
   </div>
@@ -562,92 +566,92 @@ function uncustomize(item) {
   </div>
   </div>
   `;
-}
-let paneer = "";
-let mushroom = "";
-let dal = "";
-let kofta = "";
-let chaap = "";
-let chana = "";
-let vegetable = "";
-let rice = "";
-let naan = "";
-let roti = "";
-let paratha = "";
-let rayta = "";
-let salad = "";
-let chinese = "";
-let Momos = "";
-for (let i = 0; i < products.length; i++) {
-const item = products[i];
-if (i < 12) {
-  paneer += customize(item);
+    }
+    let paneer = "";
+    let mushroom = "";
+    let dal = "";
+    let kofta = "";
+    let chaap = "";
+    let chana = "";
+    let vegetable = "";
+    let rice = "";
+    let naan = "";
+    let roti = "";
+    let paratha = "";
+    let rayta = "";
+    let salad = "";
+    let chinese = "";
+    let Momos = "";
+    for (let i = 0; i < products.length; i++) {
+      const item = products[i];
+      if (i < 12) {
+        paneer += customize(item);
 
-  paneer += `
+        paneer += `
 <div class="image-zoom-container" id="image-zoom-container">
   <span class="close-zoom" onclick="closeZoomImage()">&times;</span>
   <img class="zoomed-image" id="zoomed-image">
 </div>
 `;
-}
-if (i >= 12 && i < 17) {
-  mushroom += customize(item);
-}
-if (i >= 17 && i < 24) {
-  dal += customize(item);
-}
-if (i >= 24 && i < 26) {
-  kofta += customize(item);
-}
-if (i >= 26 && i < 28) {
-  chaap += customize(item);
-}
-if (i >= 28 && i < 32) {
-  chana += customize(item);
-}
-if (i >= 32 && i < 41) {
-    vegetable += customize(item);
-}
-if (i >= 41 && i < 43) {
-  rice += customize(item);
-}
-if (i >= 43 && i < 46) {
-  rice += uncustomize(item);
-}
-if (i >= 47 && i < 53) {
-  naan += uncustomize(item);
-}
-if (i >= 53 && i < 59) {
-roti += uncustomize(item);
-}
-if (i >= 59 && i < 65) {
-  paratha += uncustomize(item);
-}
-if (i >= 66 && i < 71) {
-rayta +=  customize(item);
-}
-if (i >= 71 && i < 74) {
-  salad += uncustomize(item);
-}
-if (i >= 74 && i < 77) {
-  chinese += customize(item);
-}
-}
-document.querySelector(".paneer").innerHTML = paneer;
-document.querySelector(".mushroom").innerHTML = mushroom;
-document.querySelector(".dal").innerHTML = dal;
-document.querySelector(".kofta").innerHTML = kofta;
-document.querySelector(".chaap").innerHTML = chaap;
-document.querySelector(".chana").innerHTML = chana;
-document.querySelector(".vegetable").innerHTML = vegetable;
-document.querySelector(".rice").innerHTML = rice;
-document.querySelector(".naan").innerHTML = naan;
-document.querySelector(".roti").innerHTML = roti;
-document.querySelector(".paratha").innerHTML = paratha;
-document.querySelector(".rayta").innerHTML = rayta;
-document.querySelector(".salad").innerHTML = salad;
-document.querySelector(".chinese").innerHTML = chinese;
-}
+      }
+      if (i >= 12 && i < 17) {
+        mushroom += customize(item);
+      }
+      if (i >= 17 && i < 24) {
+        dal += customize(item);
+      }
+      if (i >= 24 && i < 26) {
+        kofta += customize(item);
+      }
+      if (i >= 26 && i < 28) {
+        chaap += customize(item);
+      }
+      if (i >= 28 && i < 32) {
+        chana += customize(item);
+      }
+      if (i >= 32 && i < 41) {
+        vegetable += customize(item);
+      }
+      if (i >= 41 && i < 43) {
+        rice += customize(item);
+      }
+      if (i >= 43 && i < 46) {
+        rice += uncustomize(item);
+      }
+      if (i >= 47 && i < 53) {
+        naan += uncustomize(item);
+      }
+      if (i >= 53 && i < 59) {
+        roti += uncustomize(item);
+      }
+      if (i >= 59 && i < 65) {
+        paratha += uncustomize(item);
+      }
+      if (i >= 66 && i < 71) {
+        rayta += customize(item);
+      }
+      if (i >= 71 && i < 74) {
+        salad += uncustomize(item);
+      }
+      if (i >= 74 && i < 77) {
+        chinese += customize(item);
+      }
+    }
+    document.querySelector(".paneer").innerHTML = paneer;
+    document.querySelector(".mushroom").innerHTML = mushroom;
+    document.querySelector(".dal").innerHTML = dal;
+    document.querySelector(".kofta").innerHTML = kofta;
+    document.querySelector(".chaap").innerHTML = chaap;
+    document.querySelector(".chana").innerHTML = chana;
+    document.querySelector(".vegetable").innerHTML = vegetable;
+    document.querySelector(".rice").innerHTML = rice;
+    document.querySelector(".naan").innerHTML = naan;
+    document.querySelector(".roti").innerHTML = roti;
+    document.querySelector(".paratha").innerHTML = paratha;
+    document.querySelector(".rayta").innerHTML = rayta;
+    document.querySelector(".salad").innerHTML = salad;
+    document.querySelector(".chinese").innerHTML = chinese;
+  }
 };
 
 //  ------------------Function to toggle dark mode-----------------------------
@@ -669,7 +673,6 @@ function toggleDarkMode() {
     modeIcon.classList.add("fa-moon");
 
     localStorage.setItem("darkMode", "disabled");
-
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
@@ -692,58 +695,78 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // JavaScript function to zoom in on an image
 function zoomImage(image) {
-  const zoomedImage = document.getElementById('zoomed-image');
-  const imageZoomContainer = document.getElementById('image-zoom-container');
-  
+  const zoomedImage = document.getElementById("zoomed-image");
+  const imageZoomContainer = document.getElementById("image-zoom-container");
+
   zoomedImage.src = image.src;
-  imageZoomContainer.style.display = 'block';
+  imageZoomContainer.style.display = "block";
 }
 
 // JavaScript function to close the zoomed-in image
 function closeZoomImage() {
-  const imageZoomContainer = document.getElementById('image-zoom-container');
-  imageZoomContainer.style.display = 'none';
+  const imageZoomContainer = document.getElementById("image-zoom-container");
+  imageZoomContainer.style.display = "none";
 }
 
-                      // Invoice Generate
+// Invoice Generate
 
 function generateAndDownloadInvoice(shopName, ownerName, mobileNo, cartData) {
+  const customerData = JSON.parse(localStorage.getItem("userData"));
+
+  const {
+    name: customerName,
+    address: customerAddress,
+    mobileNumber: customerPhone,
+  } = customerData;
   // Create an array to store the table body data
   const tableBody = [];
 
   // Add header row to the table
-  tableBody.push(['Products', 'Quantity', 'Price', 'Total']);
+  tableBody.push(["Products", "Quantity", "Price", "Total"]);
 
   // Iterate through the cart items and add them to the table
   for (const itemId in cartData) {
     if (cartData.hasOwnProperty(itemId)) {
       const item = cartData[itemId];
-      tableBody.push([item.name, item.quantity, `₹ ${item.price}`, `₹ ${item.price * item.quantity}`]);
+      tableBody.push([
+        item.name,
+        item.quantity,
+        `₹ ${item.price}`,
+        `₹ ${item.price * item.quantity}`,
+      ]);
     }
   }
 
- // Calculate the total amount including the delivery charge
- const deliveryCharge = 20; // You can adjust this value as needed
- const itemtotal = Object.values(cartData).reduce((total, item) => total + item.price * item.quantity, 0) ;
- const totalAmount = Object.values(cartData).reduce((total, item) => total + item.price * item.quantity, 0) + deliveryCharge;
+  // Calculate the total amount including the delivery charge
+  const deliveryCharge = 20; // You can adjust this value as needed
+  const itemTotal = Object.values(cartData).reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const totalAmount = itemTotal + deliveryCharge;
 
   // Define the content for your PDF
   const docDefinition = {
     content: [
-      { text: 'Chaman Dhaba', style: 'header' },
-      {text: `Pehowa, Haryana, 136128`, style: 'headerr'},
-      {text: `Phone Number - +91 98967-55380`, style: 'headerr'},
-      { text: 'Invoice Details', style: 'subheader' },
+      { text: "Chaman Dhaba", style: "header" },
+      { text: `Pehowa, Haryana, 136128`, style: "headerr" },
+      { text: `Phone Number - +91 98967-55380`, style: "headerr" },
+      { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 515, y2: 10, lineWidth: 2 }], margin: [0, 20] },
+      { text: "Invoice Details", style: "subheader" },
+      { text: `Customer Name   -     ${customerName}`, style: 'customerInfo' },
+      { text: `Address                 -     ${customerAddress}`, style: 'customerInfo' },
+      { text: ` Phone Number     -     ${customerPhone}`, style: 'customerInfoWithSpace' },
       {
         table: {
           widths: ['*', 'auto', 'auto', 'auto'],
           headerRows: 1,
           alignment: 'center',
+          margin: [0, 10, 0, 0],
           body: tableBody,
         },
         style: 'tableStyle', // Add style for the table body content
       },
-      { text: `Item Total:          ₹ ${itemtotal.toFixed(2)}`, style: 'total' },
+      { text: `Item Total:          ₹ ${itemTotal.toFixed(2)}`, style: 'total' },
       { text: `Service Charge:   ₹ 20.00  `, style: 'totall' },
       { text: `Total Amount:    ₹ ${totalAmount.toFixed(2)}`, style: 'totall' },
     ],
@@ -779,7 +802,17 @@ function generateAndDownloadInvoice(shopName, ownerName, mobileNo, cartData) {
       },
       tableStyle: {
         fontSize: 15,
-      }
+      },
+      customerInfo: {
+        fontSize: 20,
+        alignment: 'left',
+        margin: [0, 10, 0, 0],
+      },
+      customerInfoWithSpace: { // Adjusted style with space
+        fontSize: 20,
+        alignment: 'left',
+        margin: [0, 10, 0, 20], // Increase bottom margin
+      },
     },
   };
 
@@ -789,7 +822,6 @@ function generateAndDownloadInvoice(shopName, ownerName, mobileNo, cartData) {
   // Download the PDF
   pdfDocGenerator.download('invoice.pdf');
 }
-
 
 function showPopup() {
   // Create the popup element
@@ -804,15 +836,15 @@ function showPopup() {
   // Add a click event listener to the close button to close the popup
   closeButton.addEventListener("click", function () {
     location.reload();
-    });
+  });
   // Create the success message
   var successMessage = document.createElement("p");
   successMessage.textContent = "Order placed successfully!";
-  
+
   // Create a container div for centering the button
   var buttonContainer = document.createElement("div");
   buttonContainer.className = "button-container";
-  
+
   // Create the "View Invoice" button
   var viewInvoiceButton = document.createElement("button");
   viewInvoiceButton.textContent = "Download Invoice";
@@ -820,29 +852,38 @@ function showPopup() {
 
   // Add an event listener to the button (you can replace the function with your own logic)
   viewInvoiceButton.addEventListener("click", function () {
-    generateAndDownloadInvoice('Chaman Dhaba', 'Neeraj Manchanda', '+91 98967-55380', cartData);
-});
+    generateAndDownloadInvoice(
+      "Chaman Dhaba",
+      "Neeraj Manchanda",
+      "+91 98967-55380",
+      cartData
+    );
+  });
   // Append elements to the popup
-  popup.appendChild(closeButton); 
+  popup.appendChild(closeButton);
   popup.appendChild(successMessage);
   buttonContainer.appendChild(viewInvoiceButton);
   popup.appendChild(buttonContainer);
-  
+
   // Create the overlay element
   var overlay = document.createElement("div");
   overlay.className = "overlay";
-  
+
   // Append the popup and overlay to the body
   document.body.appendChild(overlay);
   document.body.appendChild(popup);
-  
+
   // Show the popup and overlay
   overlay.style.display = "block";
   popup.style.display = "block";
-  
+
   // Function to close the popup
   function closePopup() {
     overlay.style.display = "none";
     popup.style.display = "none";
   }
+}
+function isUserSignedUp() {
+  const userData = localStorage.getItem("userData");
+  return userData !== null;
 }
