@@ -384,8 +384,13 @@ function showCartModal() {
   emptyCell5.classList.add("cart-footer");
   delivery.appendChild(emptyCell5);
 
+  const emptyCell9 = document.createElement("td");
+  emptyCell9.textContent = "[ Upto 2km ]";
+  emptyCell9.classList.add("cart-footer");
+  delivery.appendChild(emptyCell9);
+
   const emptyCell6 = document.createElement("td");
-  emptyCell6.setAttribute("colspan", "2");
+  emptyCell6.setAttribute("colspan", "1");
   delivery.appendChild(emptyCell6);
 
   const deliverycell = document.createElement("td");
