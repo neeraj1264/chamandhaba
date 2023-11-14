@@ -360,6 +360,7 @@ section {
   border: 0.2rem solid black;
   background: repeating-radial-gradient(black, transparent 100px);
   color: white;
+  font-weight: bolder;
   cursor: pointer;
   font-size: 2rem;
   border-radius: 3.5rem;
@@ -715,12 +716,11 @@ header img {
 
   .btn {
     padding: .5rem 1.5rem;
-    font-size: 1rem;
+
   }
 
   .btnn {
     padding: .5rem 1.5rem;
-    font-size: 1rem;
   }
   
   .go{
@@ -906,6 +906,15 @@ td img {
 body.dark-mode {
   background-color: black;
   color: white;
+}
+body.dark-mode .value-button {
+  /* background: repeating-radial-gradient(white, rgba(100, 100, 111, 0.2) 200px); */
+  color: black;
+}
+
+body.dark-mode input.number {
+  background: repeating-radial-gradient(white, rgba(100, 100, 111, 0.2) 200px);
+  color: black;
 }
 body.dark-mode .speciality-heading {
   color: white;
@@ -1289,3 +1298,56 @@ body.dark-mode .dropdownn{
 #signup-form button:hover {
   background-color: #0056b3;
 }
+
+form {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.value-button {
+  display: inline-block;
+  /* border: 1px solid #ddd; */
+  margin-top: 0px;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  padding: 3px 9px;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  /* background: repeating-radial-gradient(black, transparent 100px); */
+  color: white;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+.decrease {
+left: .2rem;
+}
+
+.increase {
+  left: 8.5rem;
+}
+input.number {
+  text-align: center;
+  border: none;
+  /* border-top: 1px solid black; */
+  /* border-bottom: 1px solid black; */
+  margin-top: 1px;
+  width: 92px;
+  font-size: 2rem;
+  height: 29px;
+  border-radius: 4rem;
+  background: repeating-radial-gradient(black, transparent 100px);
+  color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

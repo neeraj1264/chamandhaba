@@ -97,14 +97,14 @@ function handleAddToCartClick(event) {
   const button = event.target.closest(".add-to-cart");
   if (button) {
     if (!isUserSignedUp()) {
-      event.preventDefault();
-      alert("Enter Your Address First");
-      window.location.href = "signup.html";
-    } else if (isUserSignedUp()) {
-      const GotoCart = button.parentNode.querySelector(".Go-to-Cart");
+      event.preventDefault(); 
+      alert("Enter Your Address First")
+      window.location.href = 'signup.html'; 
+    } else if(isUserSignedUp()){
+      const quantity = button.parentNode.querySelector(".quantity-control");
 
       button.style.display = "none";
-      GotoCart.style.display = "flex";
+      quantity.style.display = "flex";
 
       // Update cart count only when "Order Now" button is clicked
       cartCount++;
@@ -461,7 +461,7 @@ function closeCartModal() {
   document.getElementById("dark-mode-toggle").style.display = "block";
   const cartModal = document.getElementById("cartModal");
   cartModal.style.display = "none";
-  location.reload();
+  // location.reload();
 }
 
 function addToCart(id, name, price, image, quantity) {
@@ -536,12 +536,14 @@ http.onload = function () {
       <option value="Full">Full - ₹${item.price.Full}</option>
     </select><br><br>
   </div>
-  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${
-    item.id
-  }', '${item.name}', '${item.image}')">Add</button>
-        <div class="Go-to-Cart" style="display: none;">
-    <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-    </div>
+  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
+  
+  <form class="quantity-control" style="display: none;">
+  <div class="value-button decrease" onclick="decreaseValue(${item.id})" value="Decrease Value"><i class="fas fa-minus-circle"></i></div>
+  <input type="number" class="number" id="number-${item.id}" value="1" readonly />
+  <div class="value-button increase" onclick="increaseValue(${item.id})" value="Increase Value"><i class="fas fa-plus-circle"></i></div>
+ </form>
+
     </div>
     `;
     }
@@ -560,12 +562,13 @@ http.onload = function () {
    </span>
    <div class="stars"></div>
   
-  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${
-        item.name
-      }', ${item.price}, '${item.image}') ">ADD</h2>
-  <div class="Go-to-Cart" style="display: none;">
-  <h2 class="go" onclick="showCartModal()">GO <i class="fas fa fa-shopping-cart"></i></h2>
-  </div>
+  <h2 class="btn add-to-cart "  onclick="addToCart('${item.id}', '${item.name}', ${item.price}, '${item.image}') ">ADD</h2>
+ 
+  <form class="quantity-control" style="display: none;">
+  <div class="value-button decrease" onclick="decreaseValue(${item.id})" value="Decrease Value"><i class="fas fa-minus-circle"></i></div>
+  <input type="number" class="number" id="number-${item.id}" value="1" readonly />
+  <div class="value-button increase" onclick="increaseValue(${item.id})" value="Increase Value"><i class="fas fa-plus-circle"></i></div>
+ </form>
   
   </div>
   </div>
@@ -711,6 +714,52 @@ function zoomImage(image) {
 function closeZoomImage() {
   const imageZoomContainer = document.getElementById("image-zoom-container");
   imageZoomContainer.style.display = "none";
+}
+
+function increaseValue(itemId) {
+  var value = parseInt(document.getElementById(`number-${itemId}`).value, 10);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById(`number-${itemId}`).value = value;
+  updateCartData(itemId, value);
+}
+
+function decreaseValue(itemId) {
+  var valueElement = document.getElementById(`number-${itemId}`);
+  var value = parseInt(valueElement.value, 10);
+  value = isNaN(value) ? 0 : value;
+
+  // Check if the value is greater than 1
+  if (value > 1) {
+    value--;
+    valueElement.value = value;
+    updateCartData(itemId, value);
+  } else {
+    // If the value is 1 or less, hide the quantity container
+    valueElement.value = 1;
+    delete cartData[itemId];
+    updateCartCount(); // Update the cart count
+    hideQuantityContainer(itemId);
+  }
+}
+
+function updateCartData(itemId, quantity) {
+  if (cartData.hasOwnProperty(itemId)) {
+    cartData[itemId].quantity = quantity;
+  }
+}
+
+function hideQuantityContainer(itemId) {
+  const quantityContainer = document.getElementById(`number-${itemId}`).closest(".quantity-control");
+  quantityContainer.style.display = "none";
+  cartCount--;
+  cartCountElement.textContent = cartCount;
+
+
+  const button = quantityContainer.parentNode.querySelector(".add-to-cart");
+  button.style.display = "inline-block";
+
+  
 }
 
 // Invoice Generate
