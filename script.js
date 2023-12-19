@@ -224,6 +224,12 @@ function showCartModal() {
     closeCartModal();
     return;
   }
+
+  const menuHeader = document.getElementById("menu-head");
+  if (menuHeader) {
+    menuHeader.style.display = "none";
+  }
+
   const cartModal = document.getElementById("cartModal");
   cartModal.style.display = "block";
 
@@ -941,3 +947,68 @@ function isUserSignedUp() {
   const userData = localStorage.getItem("userData");
   return userData !== null;
 }
+
+const menuheader = document.getElementById("menu-head");
+const navbar = document.querySelector(".navbar");
+
+const specificScrollPosition = 1896;
+
+window.addEventListener("scroll", function () {
+  let scrollPosition = window.scrollY || window.scrollY;
+  // console.log('Scroll position:', scrollPosition);
+  if (scrollPosition > specificScrollPosition && !isCartModalOpen) {
+    menuheader.style.display = "flex";
+    navbar.classList.add("activee");
+  } else {
+    menuheader.style.display = "none";
+    navbar.classList.remove("activee");
+  }
+});
+
+// Menu items data
+
+const menuItems = [
+  { id: 'paneer', image: 'shahipaneer.jpeg', name: 'Paneer' },
+  { id: 'mushroom', image: 'mm.jpeg', name: 'Mushroom' },
+  { id: 'dal', image: 'dalmakhani.jpeg', name: 'Dal' },
+  { id: 'chaap', image: 'gravychaap.jpeg', name: 'Chaap' },
+  { id: 'chana', image: 'chanamasala.jpeg', name: 'Chana' },
+  { id: 'vegetable', image: 'mixveg.jpeg', name: 'Vegetable' },
+  { id: 'rice', image: 'jeerarice.jpeg', name: 'Rice' },
+  { id: 'naan', image: 'butternaan.jpeg', name: 'Naan' },
+  { id: 'roti', image: 'tandooriroti.jpeg', name: 'Roti' },
+  { id: 'paratha', image: 'paneerparata.jpeg', name: 'Paratha' },
+  { id: 'rayta', image: 'mixrayta.jpeg', name: 'Rayta' },
+  { id: 'salad', image: 'greensalad.jpeg', name: 'Salad' },
+  { id: 'chinese', image: 'cheesepan.jpg', name: 'Chinese' },
+];
+
+// Function to generate HTML for menu items
+function generateMenuItems() {
+  const menuHead = document.getElementById('menu-head');
+
+  menuItems.forEach(item => {
+    const menuItem = document.createElement('div');
+    menuItem.classList.add('menu-item');
+
+    const anchor = document.createElement('a');
+    anchor.href = `#${item.id}`;
+
+    const img = document.createElement('img');
+    img.src = `images/${item.image}`;
+    img.alt = item.name;
+
+    const menuName = document.createElement('span');
+    menuName.classList.add('menu-name');
+    menuName.textContent = item.name;
+
+    anchor.appendChild(img);
+    anchor.appendChild(menuName);
+    menuItem.appendChild(anchor);
+
+    menuHead.appendChild(menuItem);
+  });
+}
+
+// Call the function to generate menu items
+generateMenuItems();
