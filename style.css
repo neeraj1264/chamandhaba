@@ -781,7 +781,7 @@ header img {
   }
 
   .navbar.active {
-    top: 66%;
+    top: 92%;
     clip-path: polygon(0 0, 100% 1%, 100% 100%, 0 100%);
   }
 
@@ -861,7 +861,7 @@ header img {
     font-weight: 800;
   }
   .activee{
-    margin-top: 105px;
+    margin-top: 86px;
   }
 }
 
