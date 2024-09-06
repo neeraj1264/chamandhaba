@@ -1358,8 +1358,8 @@ input[type=number]::-webkit-outer-spin-button {
 #loader{
   display: block;
   font-size: 2rem;
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 40%;
   left: 40%;
   font-weight: 800;
   /* background: grey; */
