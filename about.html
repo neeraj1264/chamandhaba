@@ -2,143 +2,151 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="shortcut icon" type="image" href="images/chamanlogo.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="shortcut icon" type="image" href="images/chamanlogo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
 
 <body>
 
-    <!-- header section starts  -->
+  <!-- header section starts  -->
 
-    <header class="header">
+  <header class="header">
 
-        <a href="index.html" id="logo"> <img src="images/chaman.png" alt=""></a>
-        <div id="menu-bars" class="fas fa-bars"></div>
+    <div id="menu-bars" class="fas fa-bars"></div>
 
-        <nav class="navbar">
-            <a href="index.html">home</a>
-            <a href="review.html">review</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
+    <nav class="navbar">
+      <a href="index.html">home</a>
+      <a href="review.html">Review</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
 
-        </nav>
-        <div id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()">
-            <i id="mode-icon" class="fas fa-3x fa-moon"></i>
-        </div>
-    </header>
+    </nav>
 
-    <!-- header section ends -->
+    <div id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <i id="mode-icon" class="fas fa-3x fa-moon"></i>
+    </div>
+    <a href="signup.html" id="logo"> <img id="headerLogo" src="images/login2.jpeg" alt=""></a>
 
-    <section class="contact" id="contact">
-        <h1 class="heading"> <span>About</span> Us </h1>
+  </header>
+  <!-- header section ends -->
 
-        <section class="contact-us">
+  <section class="contact" id="contact">
+    <h1 class="heading"> <span>About</span> Us </h1>
 
-            <h2>Welcome to Chaman Dhaba, a culinary journey through the heart and soul of Indian cuisine.<br><br>
-                At Chaman Dhaba, we believe in preserving the rich heritage of traditional Indian cooking while
-                embracing the evolving tastes of our discerning patrons. Our story began with a passion for authentic
-                flavors, a commitment to quality, and a vision to create a dining experience that captures the essence
-                of India's diverse culinary landscape.</h2>
+    <section class="contact-us">
 
-        </section>
-        <h1 class="heading"> <span>Our </span> Cuisine </h1>
+      <h2>Welcome to Chaman Dhaba, a culinary journey through the heart and soul of Indian cuisine.<br><br>
+        At Chaman Dhaba, we believe in preserving the rich heritage of traditional Indian cooking while
+        embracing the evolving tastes of our discerning patrons. Our story began with a passion for authentic
+        flavors, a commitment to quality, and a vision to create a dining experience that captures the essence
+        of India's diverse culinary landscape.</h2>
 
-        <section class="contact-us">
-
-            <h2>Our menu is a celebration of India's culinary diversity. From the fiery spices of the North
-                to the coastal flavors of the South, our kitchen is a melting pot of regional delicacies. Whether you
-                crave the comfort of classic dishes or wish to embark on a gastronomic adventure, our chefs curate each
-                recipe with precision, ensuring an explosion of flavors in every bite.</h2>
-
-        </section>
-
-        <h1 class="heading"> <span>Your Satisfaction </span> Matters </h1>
-
-        <section class="contact-us">
-
-            <h2>Your satisfaction is our top priority. We take pride in delivering more than just food; we deliver an
-                experience. With Chaman Dhaba, you can expect excellent customer service, reliable delivery, and a
-                commitment to exceeding your expectations.
-
-                Thank you for choosing Foodies Hub as your go-to destination for fast food and dinner. We look forward
-                to serving you with culinary delights that keep you coming back for more. Join us in this gastronomic
-                journey, and let's explore the world of flavors together!<br><br>
-                Come, dine with us, and become a part of our ever-growing Chaman Dhaba family.</h2>
-
-        </section>
     </section>
-    <section class="footer">
+    <h1 class="heading"> <span>Our </span> Cuisine </h1>
 
-        <a href="#">
-          <div class="btn">
-            <h5>Copyright &copy;1982 | Chaman Dhaba</h5>
-    
-          </div>
-        </a>
-      </section>
+    <section class="contact-us">
+
+      <h2>Our menu is a celebration of India's culinary diversity. From the fiery spices of the North
+        to the coastal flavors of the South, our kitchen is a melting pot of regional delicacies. Whether you
+        crave the comfort of classic dishes or wish to embark on a gastronomic adventure, our chefs curate each
+        recipe with precision, ensuring an explosion of flavors in every bite.</h2>
+
+    </section>
+
+    <h1 class="heading"> <span>Your Satisfaction </span> Matters </h1>
+
+    <section class="contact-us">
+
+      <h2>Your satisfaction is our top priority. We take pride in delivering more than just food; we deliver an
+        experience. With Chaman Dhaba, you can expect excellent customer service, reliable delivery, and a
+        commitment to exceeding your expectations.
+
+        Thank you for choosing Foodies Hub as your go-to destination for fast food and dinner. We look forward
+        to serving you with culinary delights that keep you coming back for more. Join us in this gastronomic
+        journey, and let's explore the world of flavors together!<br><br>
+        Come, dine with us, and become a part of our ever-growing Chaman Dhaba family.</h2>
+
+    </section>
+  </section>
+  <section class="footer">
+
+    <a href="#">
+      <div class="btn">
+        <h5>Copyright &copy;1982 | Chaman Dhaba</h5>
+
+      </div>
+    </a>
+  </section>
 </body>
 <script>
-    // navbar
-    let menubar = document.querySelector("#menu-bars");
-    let mynav = document.querySelector(".navbar");
+  // navbar
+  let menubar = document.querySelector("#menu-bars");
+  let mynav = document.querySelector(".navbar");
 
-    menubar.onclick = () => {
+  menubar.onclick = () => {
+    menubar.classList.toggle("fa-times");
+    mynav.classList.toggle("active");
+  };
+  // Add a click event listener to all navigation bar elements except the menu icon
+  const navbarItems = document.querySelectorAll(".navbar a:not(#menu-bars)");
+  navbarItems.forEach(item => {
+    item.addEventListener("click", () => {
+      if (mynav.classList.contains("active")) {
         menubar.classList.toggle("fa-times");
         mynav.classList.toggle("active");
-    };
-    // Add a click event listener to all navigation bar elements except the menu icon
-    const navbarItems = document.querySelectorAll(".navbar a:not(#menu-bars)");
-    navbarItems.forEach(item => {
-        item.addEventListener("click", () => {
-            if (mynav.classList.contains("active")) {
-                menubar.classList.toggle("fa-times");
-                mynav.classList.toggle("active");
-            }
-        });
+      }
     });
-    function toggleDarkMode() {
-        const body = document.body;
-        body.classList.toggle("dark-mode");
+  });
+  function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
 
-        // Get the mode icon element
-        const modeIcon = document.getElementById("mode-icon");
+    // Get the mode icon element
+    const modeIcon = document.getElementById("mode-icon");
 
-        // Toggle the icon between moon and sun based on the dark mode class
-        if (body.classList.contains("dark-mode")) {
-            modeIcon.classList.remove("fa-moon");
-            modeIcon.classList.add("fa-sun");
+    // Toggle the icon between moon and sun based on the dark mode class
+    if (body.classList.contains("dark-mode")) {
+      modeIcon.classList.remove("fa-moon");
+      modeIcon.classList.add("fa-sun");
 
-            localStorage.setItem("darkMode", "enabled");
-        } else {
-            modeIcon.classList.remove("fa-sun");
-            modeIcon.classList.add("fa-moon");
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      modeIcon.classList.remove("fa-sun");
+      modeIcon.classList.add("fa-moon");
 
-            localStorage.setItem("darkMode", "disabled");
+      localStorage.setItem("darkMode", "disabled");
 
-        }
     }
-    document.addEventListener("DOMContentLoaded", function () {
-        const body = document.body;
-        const modeIcon = document.getElementById("mode-icon");
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+    const modeIcon = document.getElementById("mode-icon");
 
-        // Check if the user has a preference in localStorage
-        const darkModePreference = localStorage.getItem("darkMode");
+    // Check if the user has a preference in localStorage
+    const darkModePreference = localStorage.getItem("darkMode");
 
-        if (darkModePreference === "enabled") {
-            body.classList.add("dark-mode");
-            modeIcon.classList.remove("fa-moon");
-            modeIcon.classList.add("fa-sun");
-        } else {
-            body.classList.remove("dark-mode");
-            modeIcon.classList.remove("fa-sun");
-            modeIcon.classList.add("fa-moon");
-        }
-    });
+    if (darkModePreference === "enabled") {
+      body.classList.add("dark-mode");
+      modeIcon.classList.remove("fa-moon");
+      modeIcon.classList.add("fa-sun");
+    } else {
+      body.classList.remove("dark-mode");
+      modeIcon.classList.remove("fa-sun");
+      modeIcon.classList.add("fa-moon");
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
+    if (savedProfilePicUrl) {
+      document.getElementById('headerLogo').src = savedProfilePicUrl;
+    }
+  });
 </script>
 
 </html>

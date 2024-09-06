@@ -536,7 +536,7 @@ http.onload = function () {
       <option value="Full">Full - ₹${item.price.Full}</option>
     </select><br><br>
   </div>
-  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">Add</button>
+  <button class="btn btn-ok add-to-cart" onclick="addToCartWithSize('${item.id}', '${item.name}', '${item.image}')">ADD</button>
   
   <form class="quantity-control" style="display: none;">
   <div class="value-button decrease" onclick="decreaseValue(${item.id})" value="Decrease Value"><i class="fas fa-minus-circle"></i></div>
@@ -941,3 +941,11 @@ function isUserSignedUp() {
   const userData = localStorage.getItem("userData");
   return userData !== null;
 }
+
+// Optional: Load the saved profile picture on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
+  if (savedProfilePicUrl) {
+      document.getElementById('headerLogo').src = savedProfilePicUrl;
+  }
+});

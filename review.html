@@ -16,19 +16,21 @@
 
   <header class="header">
 
-    <a href="index.html" id="logo"> <img src="images/chaman.png" alt=""></a>
     <div id="menu-bars" class="fas fa-bars"></div>
 
     <nav class="navbar">
       <a href="index.html">home</a>
-      <a href="review.html">review</a>
+      <a href="review.html">Review</a>
       <a href="about.html">About Us</a>
       <a href="contact.html">Contact Us</a>
 
     </nav>
+
     <div id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()">
       <i id="mode-icon" class="fas fa-3x fa-moon"></i>
     </div>
+    <a href="signup.html" id="logo"> <img id="headerLogo" src="images/login2.jpeg" alt=""></a>
+
   </header>
 
   <!-- header section ends -->
@@ -155,6 +157,12 @@
       body.classList.remove("dark-mode");
       modeIcon.classList.remove("fa-sun");
       modeIcon.classList.add("fa-moon");
+    }
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
+    if (savedProfilePicUrl) {
+      document.getElementById('headerLogo').src = savedProfilePicUrl;
     }
   });
 </script>

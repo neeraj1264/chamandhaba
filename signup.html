@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,106 +55,152 @@
             cursor: pointer;
             margin-top: 10px;
         }
-        @media (max-width: 768px) { /* Adjust styles for tablets and smaller screens */
+
+        @media (max-width: 768px) {
+
+            /* Adjust styles for tablets and smaller screens */
             #signup-form {
-                width: 80%; /* Adjust the width for tablets */
-                padding: 15px; /* Adjust padding for tablets */
+                width: 80%;
+                /* Adjust the width for tablets */
+                padding: 15px;
+                /* Adjust padding for tablets */
             }
         }
 
-        @media (max-width: 480px) { /* Adjust styles  for mobile devices */
+        @media (max-width: 480px) {
+
+            /* Adjust styles  for mobile devices */
             #signup-form {
-                width: 90%; /* Adjust the width for mobile devices */
-                padding: 10px; /* Adjust padding for mobile devices */
+                width: 90%;
+                /* Adjust the width for mobile devices */
+                padding: 10px;
+                /* Adjust padding for mobile devices */
             }
         }
     </style>
 </head>
+
 <body>
-     <!-- header section starts  -->
+    <!-- header section starts  -->
 
-     <header class="header">
-
-        <a href="index.html" id="logo"> <img src="images/chaman.png" alt=""></a>
+    <header class="header">
 
         <div id="menu-bars" class="fas fa-bars"></div>
 
         <nav class="navbar">
             <a href="index.html">home</a>
-            <a href="review.html">review</a>
+            <a href="review.html">Review</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
 
         </nav>
+
         <div id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()">
             <i id="mode-icon" class="fas fa-3x fa-moon"></i>
         </div>
+
+        <a href="signup.html" id="logo"> <img id="headerLogo" src="images/login2.jpeg" alt=""></a>
+
     </header>
 
     <!-- header section ends -->
     <h1>Enter Your Address</h1>
     <form id="signup-form" onsubmit="handleSignUp(event)">
-        <label for="nameInput">Name</label>
+        <label for="nameInput">Name <span style="color: red;">*</span></label>
         <input type="text" id="nameInput" placeholder="Enter your name" required>
-        <label for="addressInput">Address</label>
+        <label for="addressInput">Address <span style="color: red;">*</span></label>
         <input type="text" id="addressInput" placeholder="Enter your address" required>
-        <label for="mobileInput">Mobile Number</label>
+        <label for="mobileInput">Mobile  <span style="color: red;">*</span></label>
         <input type="text" id="mobileInput" placeholder="Enter your mobile number" required>
+
+        <input type="file" id="profilePicUpload" accept="image/*">
         <button type="submit">Submit</button>
     </form>
+
+    <!-- Loader -->
+<div id="loader" style="display: none;">
+    <i class="fas fa-spinner fa-spin loader" style="font-size: 3rem; color: #007bff;"></i>
+    <p>Processing...</p>
+</div>
+
 </body>
 <script>
-    function isUserSignedUp() {
-  const userData = localStorage.getItem("userData");
-  return userData !== null;
-}
-// Function to handle the signup form submission
-function handleSignUp(event) {
-  event.preventDefault(); // Prevent the form from submitting normally
+    //     function isUserSignedUp() {
+    //   const userData = localStorage.getItem("userData");
+    //   return userData !== null;
+    // }
 
-  // Get form input values
-  const name = document.querySelector("#nameInput").value.trim();
-  const address = document.querySelector("#addressInput").value.trim();
-  const mobileNumber = document.querySelector("#mobileInput").value.trim();
+    // Function to populate form inputs if user data is available
+    document.addEventListener("DOMContentLoaded", function () {
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        if (userData) {
+            document.querySelector("#nameInput").value = userData.name;
+            document.querySelector("#addressInput").value = userData.address;
+            document.querySelector("#mobileInput").value = userData.mobileNumber;
+        }
+        const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
+        if (savedProfilePicUrl) {
+            document.getElementById('headerLogo').src = savedProfilePicUrl;
+        }
+    });
 
-  // Validation: Check if name is not empty
-  if (name === "") {
-    alert("Please enter your name.");
-    return;
-  }
 
-  // Validation: Check if address is not empty
-  if (address === "") {
-    alert("Please enter your address.");
-    return;
-  }
+    // Function to handle the signup form submission
+    function handleSignUp(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
 
-  // Validation: Check if mobile number is not empty and follows a valid format
-  const mobilePattern = /^[0-9]{10}$/; // Assuming a 10-digit mobile number format
-  if (!mobilePattern.test(mobileNumber)) {
-    alert("Please enter a valid 10-digit mobile number.");
-    return;
-  }
+        // Get form input values
+        const name = document.querySelector("#nameInput").value.trim();
+        const address = document.querySelector("#addressInput").value.trim();
+        const mobileNumber = document.querySelector("#mobileInput").value.trim();
+        const profilePicUpload = document.querySelector("#profilePicUpload").files[0];
 
-  // If all validation passes, you can proceed to store the user data in local storage or send it to the server
-  const userData = {
-    name: name,
-    address: address,
-    mobileNumber: mobileNumber,
-    // Add more user data if needed
-  };
+        // Validation: Check if name is not empty
+        if (name === "") {
+            alert("Please enter your name.");
+            return;
+        }
 
-  // Store the user data in local storage
-  localStorage.setItem("userData", JSON.stringify(userData));
+        // Validation: Check if address is not empty
+        if (address === "") {
+            alert("Please enter your address.");
+            return;
+        }
 
-  // Close the modal
-//   closeSignUpModal();
-  window.location.href = "index.html"; 
-  // You can also display a success message or redirect the user to a different page
-  alert("Address Added successfully!");
-}
- // navbar
- let menubar = document.querySelector("#menu-bars");
+        // Validation: Check if mobile number is not empty and follows a valid format
+        const mobilePattern = /^[0-9]{10}$/; // Assuming a 10-digit mobile number format
+        if (!mobilePattern.test(mobileNumber)) {
+            alert("Please enter a valid 10-digit mobile number.");
+            return;
+        }
+
+        const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
+        if (savedProfilePicUrl) {
+            document.getElementById('headerLogo').src = savedProfilePicUrl;
+        }
+
+         // Show the loader
+    document.getElementById("loader").style.display = "block";
+
+     // Hide the loader after 1 second and redirect to the index page
+     setTimeout(function() {
+        document.getElementById("loader").style.display = "none";
+        window.location.href = "index.html";
+    }, 1000); 
+
+    const userData = {
+            name: name,
+            address: address,
+            mobileNumber: mobileNumber,
+            image: profilePicUpload ? URL.createObjectURL(profilePicUpload) : null
+        };
+
+        // Store the user data in local storage
+        localStorage.setItem("userData", JSON.stringify(userData));
+    }
+
+    // navbar
+    let menubar = document.querySelector("#menu-bars");
     let mynav = document.querySelector(".navbar");
 
     menubar.onclick = () => {
@@ -208,5 +255,32 @@ function handleSignUp(event) {
             modeIcon.classList.add("fa-moon");
         }
     });
+
+    document.getElementById('profilePicUpload').addEventListener('change', function (event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            // Assuming the image is successfully uploaded and the URL is received
+            const uploadedImageUrl = reader.result;
+
+            // Update the header logo image
+            document.getElementById('headerLogo').src = uploadedImageUrl;
+
+            // Optionally, save this URL in localStorage or send it to the server to persist it
+            localStorage.setItem('profilePicUrl', uploadedImageUrl);
+        };
+
+        // Read the image file as a data URL (base64 string)
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    // Optional: Load the saved profile picture on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
+        if (savedProfilePicUrl) {
+            document.getElementById('headerLogo').src = savedProfilePicUrl;
+        }
+    });
+
 </script>
+
 </html>
