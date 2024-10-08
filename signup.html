@@ -106,12 +106,12 @@
     <!-- header section ends -->
     <h1>Enter Your Address</h1>
     <form id="signup-form" onsubmit="handleSignUp(event)">
-        <label for="nameInput">Name <span style="color: red;">*</span></label>
-        <input type="text" id="nameInput" placeholder="Enter your name" required>
-        <label for="addressInput">Address <span style="color: red;">*</span></label>
-        <input type="text" id="addressInput" placeholder="Enter your address" required>
-        <label for="mobileInput">Mobile  <span style="color: red;">*</span></label>
-        <input type="text" id="mobileInput" placeholder="Enter your mobile number" required>
+        <label for="nameInput">Name <span style="color: red;"></span></label>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <label for="addressInput">Address <span style="color: red;"></span></label>
+        <input type="text" id="addressInput" placeholder="Enter your address">
+        <label for="mobileInput">Mobile  <span style="color: red;"></span></label>
+        <input type="text" id="mobileInput" placeholder="Enter your mobile number">
 
         <input type="file" id="profilePicUpload" accept="image/*">
         <button type="submit">Submit</button>
@@ -155,24 +155,21 @@
         const mobileNumber = document.querySelector("#mobileInput").value.trim();
         const profilePicUpload = document.querySelector("#profilePicUpload").files[0];
 
-        // Validation: Check if name is not empty
-        if (name === "") {
+        {{/* if (name === "") {
             alert("Please enter your name.");
             return;
         }
 
-        // Validation: Check if address is not empty
         if (address === "") {
             alert("Please enter your address.");
             return;
         }
 
-        // Validation: Check if mobile number is not empty and follows a valid format
         const mobilePattern = /^[0-9]{10}$/; // Assuming a 10-digit mobile number format
         if (!mobilePattern.test(mobileNumber)) {
             alert("Please enter a valid 10-digit mobile number.");
             return;
-        }
+        } */}}
 
         const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
         if (savedProfilePicUrl) {
