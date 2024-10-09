@@ -30,7 +30,9 @@
     <div id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()">
       <i id="mode-icon" class="fas fa-3x fa-moon"></i>
     </div>
-    <a href="signup.html" id="logo"> <img id="headerLogo" src="images/login2.jpeg" alt=""></a>
+    <a href="signup.html" id="logo"> <img id="headerLogo" src="images/login2.jpeg" alt="">
+          <div id="userIcon" class="user-initial" style="display: none"></div>
+    </a>
 
   </header>
   <!-- header section ends -->
@@ -141,12 +143,15 @@
     }
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const savedProfilePicUrl = localStorage.getItem('profilePicUrl');
-    if (savedProfilePicUrl) {
-      document.getElementById('headerLogo').src = savedProfilePicUrl;
+document.addEventListener('DOMContentLoaded', function() {
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  if (userData) {
+    // Show only the first letter of the name if no profile pic
+    document.getElementById("headerLogo").style.display = "none";
+    document.getElementById("userIcon").style.display = "flex";
+    document.getElementById("userIcon").textContent = userData.name.charAt(0).toUpperCase();
     }
-  });
+});
 </script>
 
 </html>
